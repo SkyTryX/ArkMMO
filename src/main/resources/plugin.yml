@@ -1,0 +1,4 @@
+name: ArkMMO
+version: '${project.version}'
+main: fr.skytryx.arkmmo.ArkMMO
+api-version: '1.20'
