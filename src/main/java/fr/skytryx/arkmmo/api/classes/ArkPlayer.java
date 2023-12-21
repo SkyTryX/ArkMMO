@@ -1,4 +1,4 @@
-package fr.skytryx.arkmmo.api;
+package fr.skytryx.arkmmo.api.classes;
 
 import org.bukkit.entity.Player;
 

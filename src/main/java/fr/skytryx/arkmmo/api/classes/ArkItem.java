@@ -1,5 +1,6 @@
-package fr.skytryx.arkmmo.api;
+package fr.skytryx.arkmmo.api.classes;
 
+import fr.skytryx.arkmmo.api.enums.PowerType;
 import org.bukkit.Material;
 
 public class ArkItem {
@@ -9,9 +10,9 @@ public class ArkItem {
     public String name;
     public boolean is_glowing;
 
-    public String power;
+    public PowerType power;
 
-    public ArkItem(Material m, String n, String p){
+    public ArkItem(Material m, String n, PowerType p){
         material = m;
         name = n;
         power = p;
@@ -19,7 +20,7 @@ public class ArkItem {
         lore = new String[]{""};
     }
 
-    public ArkItem(Material m, String n, String p, String[] l, boolean glow){
+    public ArkItem(Material m, String n, PowerType p, String[] l, boolean glow){
         material = m;
         name = n;
         power = p;
