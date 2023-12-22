@@ -19,4 +19,8 @@ public class Claim {
     public void setOwner(Guild o){
         owner = o;
     }
+
+    public Chunk getChunk() {
+        return chunk;
+    }
 }

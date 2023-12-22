@@ -2,6 +2,9 @@ package fr.skytryx.arkmmo.api.classes;
 
 import org.bukkit.entity.Player;
 
+import java.util.LinkedList;
+import java.util.List;
+
 public class ArkPlayer {
 
     Player player;
@@ -10,6 +13,7 @@ public class ArkPlayer {
     Integer force;
     Integer agilite;
     Integer aether;
+    List<Quest> completed_quest = new LinkedList<>();
 
     public ArkPlayer(Player p, Integer g, Integer x, Integer f, Integer a, Integer ae){
         player = p;
@@ -62,5 +66,21 @@ public class ArkPlayer {
 
     public void setAether(Integer ae){
         aether = ae;
+    }
+
+    public boolean hasDoneQuest(Quest q){
+        return completed_quest.contains(q);
+    }
+
+    public void addDoneQuest(Quest q){
+        completed_quest.add(q);
+    }
+
+    public Integer getXp() {
+        return xp;
+    }
+
+    public List<Quest> getCompleted_quest() {
+        return completed_quest;
     }
 }

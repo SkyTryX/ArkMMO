@@ -5,13 +5,13 @@ import fr.skytryx.arkmmo.api.enums.RewardType;
 
 public class Quest {
 
-    public String name;
-    public String description;
-    public QuestType questType;
-    public Object questObject;
-    public int amount;
-    public RewardType rewardType;
-    public Object reward;
+    String name;
+    String description;
+    QuestType questType;
+    Object questObject;
+    Integer amount;
+    RewardType rewardType;
+    Object reward;
 
     public Quest(String n, String d, QuestType qt, Object qo, Integer a, RewardType rt, Object r){
         name = n;
@@ -47,7 +47,7 @@ public class Quest {
         return rewardType;
     }
 
-    public Object getReward(){
+    public Object getReward() {
         return reward;
     }
 }

@@ -1,13 +1,14 @@
 package fr.skytryx.arkmmo.api.classes;
 
+import java.util.LinkedList;
 import java.util.List;
 
 public class Guild {
 
     String name;
     ArkPlayer owner;
-    static List<ArkPlayer> members;
-    static List<Claim> claims;
+    List<ArkPlayer> members = new LinkedList<>();
+    List<Claim> claims = new LinkedList<>();
     Integer size = 15;
     Integer level = 0;
     Integer xp = 0;
@@ -76,5 +77,9 @@ public class Guild {
 
     public List<Claim> getClaims(){
         return claims;
+    }
+
+    public Integer getXp() {
+        return xp;
     }
 }

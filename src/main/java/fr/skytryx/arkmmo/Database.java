@@ -4,8 +4,8 @@ import java.util.HashMap;
 
 public class Database {
 
-    public HashMap<String, Object> data;
-    public String name;
+    HashMap<String, Object> data = new HashMap<>();
+    String name;
 
     public Database(String n){
         name = n;
@@ -37,5 +37,9 @@ public class Database {
 
     public Object getData(String s){
         return data.get(s);
+    }
+
+    public boolean containsData(String s){
+        return data.containsKey(s);
     }
 }
