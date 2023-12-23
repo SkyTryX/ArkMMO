@@ -8,12 +8,7 @@ import java.util.List;
 public class Zone {
 
     List<Material> minable;
-    Integer x1;
-    Integer y1;
-    Integer z1;
-    Integer x2;
-    Integer y2;
-    Integer z2;
+    Integer x1, y1, z1, x2, y2, z2;
     String name;
 
     public Zone(String n, List<Material> m, Location l1, Location l2){

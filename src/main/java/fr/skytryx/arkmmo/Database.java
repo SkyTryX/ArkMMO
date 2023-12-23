@@ -1,21 +1,34 @@
 package fr.skytryx.arkmmo;
 
+import org.bukkit.Bukkit;
+import org.bukkit.configuration.file.YamlConfiguration;
+
+import java.io.File;
+import java.io.IOException;
 import java.util.HashMap;
+import java.util.Objects;
 
 public class Database {
 
-    HashMap<String, Object> data = new HashMap<>();
+    YamlConfiguration data;
     String name;
 
     public Database(String n){
         name = n;
+        data = YamlConfiguration.loadConfiguration(new File(Objects.requireNonNull(Bukkit.getServer().getPluginManager().getPlugin("ArkMMO")).getDataFolder(), name+".yml"));
     }
 
     public boolean load(){
-        return false;
+        data = YamlConfiguration.loadConfiguration(new File(Objects.requireNonNull(Bukkit.getServer().getPluginManager().getPlugin("ArkMMO")).getDataFolder(), name+".yml"));
+        return true;
     }
 
     public boolean save(){
+        try {
+            data.save(new File(Objects.requireNonNull(Bukkit.getServer().getPluginManager().getPlugin("ArkMMO")).getDataFolder(), name+".yml"));
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
         return false;
     }
 
@@ -23,23 +36,23 @@ public class Database {
         return name;
     }
 
-    public HashMap<String, Object> getDatas(){
+    public YamlConfiguration getDatas(){
         return data;
     }
 
-    public void addData(String s, Object d){
-        data.put(s, d);
+    public void addData(String path, Object d){
+        data.set(path, d);
     }
 
-    public void removeData(String s){
-        data.remove(s);
+    public void removeData(String path){
+        data.set(path, null);
     }
 
-    public Object getData(String s){
-        return data.get(s);
+    public Object getData(String path){
+        return data.get(path);
     }
 
-    public boolean containsData(String s){
-        return data.containsKey(s);
+    public boolean containsData(String path){
+        return data.contains(path);
     }
 }
