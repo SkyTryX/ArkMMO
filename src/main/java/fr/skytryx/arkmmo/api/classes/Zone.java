@@ -12,49 +12,49 @@ public class Zone {
     String name;
 
     public Zone(String n, List<Material> m, Location l1, Location l2){
-        name = n;
-        minable = m;
-        x1 = l1.getBlockX();
-        y1 = l1.getBlockY();
-        z1 = l1.getBlockZ();
-        x2 = l2.getBlockX();
-        y2 = l2.getBlockY();
-        z2 = l2.getBlockZ();
+        this.name = n;
+        this.minable = m;
+        this.x1 = l1.getBlockX();
+        this.y1 = l1.getBlockY();
+        this.z1 = l1.getBlockZ();
+        this.x2 = l2.getBlockX();
+        this.y2 = l2.getBlockY();
+        this.z2 = l2.getBlockZ();
     }
 
     public String getName() {
-        return name;
+        return this.name;
     }
 
     public Integer getX1() {
-        return x1;
+        return this.x1;
     }
 
     public Integer getX2() {
-        return x2;
+        return this.x2;
     }
 
     public Integer getY1() {
-        return y1;
+        return this.y1;
     }
 
     public Integer getY2() {
-        return y2;
+        return this.y2;
     }
 
     public Integer getZ1() {
-        return z1;
+        return this.z1;
     }
 
     public Integer getZ2() {
-        return z2;
+        return this.z2;
     }
 
     public List<Material> getMinable() {
-        return minable;
+        return this.minable;
     }
 
     public boolean inZone(Location l){
-        return ((x1 < l.getBlockX() && l.getBlockX() < x2) || (x2 < l.getBlockX() && l.getBlockX() < x1)) && ((y1 < l.getBlockY() && l.getBlockY() < y2) || (y2 < l.getBlockY() && l.getBlockY() < y1)) && ((z1 < l.getBlockZ() && l.getBlockZ() < z2) || (z2 < l.getBlockZ() && l.getBlockZ() < z1));
+        return ((this.x1 < l.getBlockX() && l.getBlockX() < this.x2) || (this.x2 < l.getBlockX() && l.getBlockX() < this.x1)) && ((this.y1 < l.getBlockY() && l.getBlockY() < this.y2) || (this.y2 < l.getBlockY() && l.getBlockY() < this.y1)) && ((this.z1 < l.getBlockZ() && l.getBlockZ() < this.z2) || (this.z2 < l.getBlockZ() && l.getBlockZ() < this.z1));
     }
 }

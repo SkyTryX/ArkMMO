@@ -8,19 +8,19 @@ public class Claim {
     Guild owner;
 
     public Claim(Chunk c, Guild o){
-        chunk = c;
-        owner = o;
+        this.chunk = c;
+        this.owner = o;
     }
 
     public Guild getOwner(){
-        return owner;
+        return this.owner;
     }
 
     public void setOwner(Guild o){
-        owner = o;
+        this.owner = o;
     }
 
     public Chunk getChunk() {
-        return chunk;
+        return this.chunk;
     }
 }

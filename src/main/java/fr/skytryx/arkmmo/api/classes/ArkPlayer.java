@@ -8,79 +8,84 @@ import java.util.List;
 public class ArkPlayer {
 
     Player player;
-    Integer gold;
-    Integer xp;
-    Integer force;
-    Integer agilite;
-    Integer aether;
+    Integer gold = 1000;
+    Integer xp = 0;
+    Integer force = 1;
+    Integer agilite = 1;
+    Integer aether = 1;
     List<Quest> completed_quest = new LinkedList<>();
 
-    public ArkPlayer(Player p, Integer g, Integer x, Integer f, Integer a, Integer ae){
-        player = p;
-        gold = g;
-        xp = x;
-        force = f;
-        agilite = a;
-        aether = ae;
+    Guild guild;
+
+    public ArkPlayer(Player p){
+        this.player = p;
     }
 
     public Player getPlayer(){
-        return player;
+        return this.player;
     }
 
     public Integer getGold(){
-        return gold;
+        return this.gold;
     }
 
     public void setGold(Integer g){
-        gold = g;
+        this.gold = g;
     }
 
     public Integer getXP(){
-        return xp;
+        return this.xp;
     }
 
     public void setXP(Integer x){
-        xp = x;
+        this.xp = x;
     }
 
     public Integer getForce(){
-        return force;
+        return this.force;
     }
 
     public void setForce(Integer f){
-        force = f;
+        this.force = f;
     }
 
     public Integer getAgilite(){
-        return agilite;
+        return this.agilite;
     }
 
     public void setAgilite(Integer a){
-        agilite = a;
+        this.agilite = a;
     }
 
     public Integer getAether(){
-        return aether;
+        return this.aether;
     }
 
     public void setAether(Integer ae){
-        aether = ae;
+        this.aether = ae;
     }
 
     public boolean hasDoneQuest(Quest q){
-        return completed_quest.contains(q);
+        return this.completed_quest.contains(q);
     }
 
     public void addDoneQuest(Quest q){
-        completed_quest.add(q);
+        this.completed_quest.add(q);
     }
 
     public Integer getXp() {
-        return xp;
+        return this.xp;
     }
 
     public List<Quest> getCompleted_quest() {
-        return completed_quest;
+        return this.completed_quest;
+    }
+
+    public Guild getGuild() {
+        return this.guild;
+    }
+
+    public void setGuild(Guild guild) {
+        this.guild = guild;
     }
 }

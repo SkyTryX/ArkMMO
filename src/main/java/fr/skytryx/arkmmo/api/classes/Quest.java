@@ -14,40 +14,40 @@ public class Quest {
     Object reward;
 
     public Quest(String n, String d, QuestType qt, Object qo, Integer a, RewardType rt, Object r){
-        name = n;
-        description = d;
-        questType = qt;
-        questObject = qo;
-        amount = a;
-        rewardType = rt;
-        reward = r;
+        this.name = n;
+        this.description = d;
+        this.questType = qt;
+        this.questObject = qo;
+        this.amount = a;
+        this.rewardType = rt;
+        this.reward = r;
     }
 
     public String getName(){
-        return name;
+        return this.name;
     }
 
     public String getDescription(){
-        return description;
+        return this.description;
     }
 
     public QuestType getQuestType(){
-        return questType;
+        return this.questType;
     }
 
     public Object getQuestObject(){
-        return questObject;
+        return this.questObject;
     }
 
     public Integer getAmount(){
-        return amount;
+        return this.amount;
     }
 
     public RewardType getRewardType(){
-        return rewardType;
+        return this.rewardType;
     }
 
     public Object getReward() {
-        return reward;
+        return this.reward;
     }
 }

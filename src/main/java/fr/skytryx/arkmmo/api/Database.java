@@ -5,7 +5,6 @@ import org.bukkit.configuration.file.YamlConfiguration;
 
 import java.io.File;
 import java.io.IOException;
-import java.util.HashMap;
 import java.util.Objects;
 
 public class Database {
@@ -18,41 +17,36 @@ public class Database {
         data = YamlConfiguration.loadConfiguration(new File(Objects.requireNonNull(Bukkit.getServer().getPluginManager().getPlugin("ArkMMO")).getDataFolder(), name+".yml"));
     }
 
-    public boolean load(){
-        data = YamlConfiguration.loadConfiguration(new File(Objects.requireNonNull(Bukkit.getServer().getPluginManager().getPlugin("ArkMMO")).getDataFolder(), name+".yml"));
-        return true;
-    }
-
-    public boolean save(){
+    public void save(){
         try {
-            data.save(new File(Objects.requireNonNull(Bukkit.getServer().getPluginManager().getPlugin("ArkMMO")).getDataFolder(), name+".yml"));
+            this.data.save(new File(Objects.requireNonNull(Bukkit.getServer().getPluginManager().getPlugin("ArkMMO")).getDataFolder(), name+".yml"));
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
-        return false;
-    }
-
-    public String getName(){
-        return name;
     }
 
     public YamlConfiguration getDatas(){
-        return data;
+        return this.data;
     }
 
     public void addData(String path, Object d){
-        data.set(path, d);
+        this.data.set(path, d);
     }
 
     public void removeData(String path){
-        data.set(path, null);
+        this.data.set(path, null);
     }
 
     public Object getData(String path){
-        return data.get(path);
+        return this.data.get(path);
     }
 
-    public boolean containsData(String path){
-        return data.contains(path);
+    public Boolean containsData(String path){
+        return this.data.contains(path);
+    }
+
+    public Integer getSize(){
+        if(this.data.getList("") == null) return 0;
+        return Objects.requireNonNull(this.data.getList("")).size();
     }
 }

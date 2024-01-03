@@ -18,54 +18,54 @@ public class ArkItem {
     List<Enchantment> enchants = new LinkedList<>();
 
     public ArkItem(Material m, String n, PowerType p){
-        material = m;
-        name = n;
-        power = p;
-        is_glowing = false;
-        lore = new String[]{""};
+        this.material = m;
+        this.name = n;
+        this.power = p;
+        this.is_glowing = false;
+        this.lore = new String[]{""};
     }
 
     public ArkItem(Material m, String n, PowerType p, String[] l, Boolean glow){
-        material = m;
-        name = n;
-        power = p;
-        is_glowing = glow;
-        lore = l;
+        this.material = m;
+        this.name = n;
+        this.power = p;
+        this.is_glowing = glow;
+        this.lore = l;
     }
 
     public Boolean getIs_glowing() {
-        return is_glowing;
+        return this.is_glowing;
     }
 
     public List<ArkEnchant> getArkEnchants() {
-        return arkEnchants;
+        return this.arkEnchants;
     }
 
     public List<Enchantment> getEnchants() {
-        return enchants;
+        return this.enchants;
     }
 
     public Material getMaterial() {
-        return material;
+        return this.material;
     }
 
     public PowerType getPower() {
-        return power;
+        return this.power;
     }
 
     public String getName() {
-        return name;
+        return this.name;
     }
 
     public String[] getLore() {
-        return lore;
+        return this.lore;
     }
 
     public void addArkEnchant(ArkEnchant e){
-        arkEnchants.add(e);
+        this.arkEnchants.add(e);
     }
 
     public void addEnchant(Enchantment e){
-        enchants.add(e);
+        this.enchants.add(e);
     }
 }

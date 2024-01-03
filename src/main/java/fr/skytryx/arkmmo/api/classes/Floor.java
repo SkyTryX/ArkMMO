@@ -9,21 +9,21 @@ public class Floor {
     Integer number;
 
     public Floor(Location s, String n, Integer nu){
-        spawn = s;
-        name = n;
-        number = nu;
+        this.spawn = s;
+        this.name = n;
+        this.number = nu;
     }
 
     public String getName() {
-        return name;
+        return this.name;
     }
 
     public Integer getNumber() {
-        return number;
+        return this.number;
     }
 
     public Location getSpawn() {
-        return spawn;
+        return this.spawn;
     }
 }
 

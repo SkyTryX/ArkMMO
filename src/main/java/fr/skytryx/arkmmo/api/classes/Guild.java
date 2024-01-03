@@ -14,72 +14,72 @@ public class Guild {
     Integer xp = 0;
 
     public Guild(String n, ArkPlayer o){
-        name = n;
-        owner = o;
-        members.add(o);
+        this.name = n;
+        this.owner = o;
+        this.members.add(o);
     }
 
     public Integer getSize(){
-        return size;
+        return this.size;
     }
 
     public String getName(){
-        return name;
+        return this.name;
     }
 
     public void setName(String n){
-        name = n;
+        this.name = n;
     }
 
     public Integer getLevel(){
-        return level;
+        return this.level;
     }
 
     public void setLevel(Integer l){
-        level = l;
+        this.level = l;
     }
 
     public Integer getXP(){
-        return xp;
+        return this.xp;
     }
 
     public void setXP(Integer x){
-        xp = x;
+        this.xp = x;
     }
 
     public ArkPlayer getOwner(){
-        return owner;
+        return this.owner;
     }
 
     public void setOwner(ArkPlayer o){
-        owner = o;
+        this.owner = o;
     }
 
     public void addMembers(ArkPlayer p){
-        members.add(p);
+        this.members.add(p);
     }
 
     public void removeMembers(ArkPlayer p){
-        members.remove(p);
+        this.members.remove(p);
     }
 
     public List<ArkPlayer> getMembers(){
-        return members;
+        return this.members;
     }
 
     public void addClaims(Claim c){
-        claims.add(c);
+        this.claims.add(c);
     }
 
     public void removeClaims(Claim c){
-        claims.remove(c);
+        this.claims.remove(c);
     }
 
     public List<Claim> getClaims(){
-        return claims;
+        return this.claims;
     }
 
     public Integer getXp() {
-        return xp;
+        return this.xp;
     }
 }

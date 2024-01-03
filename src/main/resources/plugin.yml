@@ -2,3 +2,13 @@ name: ArkMMO
 version: '${project.version}'
 main: fr.skytryx.arkmmo.ArkMMO
 api-version: '1.20'
+commands:
+  claim:
+    description: Claim a chunk
+  unclaim:
+    description: Unclaim a chunk
+  adminclaim:
+    description: Manage claims
+    permission: arkmmo.adminclaim
+  guildcreate:
+    description: Create a guild

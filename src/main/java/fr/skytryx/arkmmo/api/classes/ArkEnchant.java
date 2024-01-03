@@ -11,38 +11,34 @@ public class ArkEnchant {
     EnchantmentTarget enchantmentTarget;
 
     public ArkEnchant(Integer ml, Integer l, String n, String d, EnchantmentTarget et){
-        max_level = ml;
-        level = l;
-        name = n;
-        description = d;
-        enchantmentTarget = et;
+        this.max_level = ml;
+        this.level = l;
+        this.name = n;
+        this.description = d;
+        this.enchantmentTarget = et;
     }
 
     public String getName(){
-        return name;
+        return this.name;
     }
 
     public Integer getLevel(){
-        return level;
+        return this.level;
     }
 
     public Integer getMaxLevel(){
-        return max_level;
+        return this.max_level;
     }
 
     public String getDescription(){
-        return description;
-    }
-
-    public EnchantmentTarget getEquipmentType(){
-        return enchantmentTarget;
+        return this.description;
     }
 
     public EnchantmentTarget getEnchantmentTarget() {
-        return enchantmentTarget;
+        return this.enchantmentTarget;
     }
 
     public Integer getMax_level() {
-        return max_level;
+        return this.max_level;
     }
 }

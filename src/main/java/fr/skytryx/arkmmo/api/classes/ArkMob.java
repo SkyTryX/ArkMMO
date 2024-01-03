@@ -1,6 +1,5 @@
 package fr.skytryx.arkmmo.api.classes;
 
-import org.bukkit.Bukkit;
 import org.bukkit.entity.EntityType;
 import org.bukkit.inventory.ItemStack;
 
@@ -14,30 +13,30 @@ public class ArkMob {
     Integer health;
     Integer damage;
    public ArkMob(EntityType et, String n, List<ItemStack> l, Integer h, Integer d){
-        entityType = et;
-        name = n;
-        loot = l;
-        health = h;
-        damage = d;
+        this.entityType = et;
+        this.name = n;
+        this.loot = l;
+        this.health = h;
+        this.damage = d;
    }
 
     public String getName() {
-        return name;
+        return this.name;
     }
 
     public EntityType getEntityType() {
-        return entityType;
+        return this.entityType;
     }
 
     public Integer getDamage() {
-        return damage;
+        return this.damage;
     }
 
     public Integer getHealth() {
-        return health;
+        return this.health;
     }
 
     public List<ItemStack> getLoot() {
-        return loot;
+        return this.loot;
     }
 }
