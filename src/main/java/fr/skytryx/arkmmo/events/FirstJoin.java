@@ -1,6 +1,5 @@
 package fr.skytryx.arkmmo.events;
 
-import fr.skytryx.arkmmo.api.Database;
 import fr.skytryx.arkmmo.api.classes.ArkPlayer;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -11,9 +10,9 @@ public class FirstJoin implements Listener {
     @EventHandler
     public void onFirstJoin(PlayerJoinEvent event){
         if(!event.getPlayer().hasPlayedBefore()){
-            Database db = new Database("arkplayer");
-            db.addData(String.valueOf(event.getPlayer().getUniqueId()), new ArkPlayer(event.getPlayer()));
-            db.save();
+            new ArkPlayer(event.getPlayer()).save();
+            event.getPlayer().sendTitle("§bBIENVENUE!", "sur Arkxia MMORPG", 1, 20, 1);
+            event.getPlayer().sendMessage("§c[First Join] §bMessage quand tu rejoins pour la première fois le serveur");
         }
     }
 }

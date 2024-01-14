@@ -1,5 +1,7 @@
 package fr.skytryx.arkmmo.api.classes;
 
+import fr.skytryx.arkmmo.api.Database;
+
 import java.util.LinkedList;
 import java.util.List;
 
@@ -79,7 +81,14 @@ public class Guild {
         return this.claims;
     }
 
-    public Integer getXp() {
-        return this.xp;
+    public void save(){
+        Database db = new Database("player");
+        db.addData(this.getName()+".claims", this.getClaims());
+        db.addData(this.getName()+".level", this.getLevel());
+        db.addData(this.getName()+".members", this.getMembers());
+        db.addData(this.getName()+".owner", this.getOwner());
+        db.addData(this.getName()+".size", this.getSize());
+        db.addData(this.getName()+".xp", this.getXP());
+        db.save();
     }
 }

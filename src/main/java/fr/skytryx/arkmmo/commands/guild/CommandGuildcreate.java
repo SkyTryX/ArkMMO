@@ -21,13 +21,9 @@ public class CommandGuildcreate implements CommandExecutor {
             ArkPlayer arkPlayer = getArkPlayer(player);
             if(arkPlayer.getGuild() == null){
                 Guild guild = new Guild(strings[0], arkPlayer);
-                Database db = new Database("guild");
-                db.addData(String.valueOf(UUID.randomUUID()), guild);
-                db.save();
-                Database db_player = new Database("arkplayer");
-                db_player.addData(player.getUniqueId().toString(), arkPlayer);
-                db_player.save();
+                guild.save();
                 arkPlayer.setGuild(guild);
+                arkPlayer.save();
                 player.sendMessage(Ftion.msgf("guild", "Successfully created guild §6"+strings[0]));
             }
         }

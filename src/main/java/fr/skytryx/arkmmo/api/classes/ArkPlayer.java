@@ -1,5 +1,6 @@
 package fr.skytryx.arkmmo.api.classes;
 
+import fr.skytryx.arkmmo.api.Database;
 import org.bukkit.entity.Player;
 
 import java.util.LinkedList;
@@ -87,5 +88,15 @@ public class ArkPlayer {
 
     public void setGuild(Guild guild) {
         this.guild = guild;
+    }
+
+    public void save(){
+        Database db = new Database("player");
+        db.addData(this.player.getUniqueId()+".gold", this.getGold());
+        db.addData(this.player.getUniqueId()+".force", this.getForce());
+        db.addData(this.player.getUniqueId()+".agilite", this.getAgilite());
+        db.addData(this.player.getUniqueId()+".aether", this.getAether());
+        db.addData(this.player.getUniqueId()+".completed_quest", this.getCompleted_quest());
+        db.save();
     }
 }
