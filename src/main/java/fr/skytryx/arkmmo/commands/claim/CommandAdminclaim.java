@@ -1,6 +1,5 @@
 package fr.skytryx.arkmmo.commands.claim;
 
-import fr.skytryx.arkmmo.api.Database;
 import fr.skytryx.arkmmo.api.Ftion;
 import fr.skytryx.arkmmo.api.classes.Claim;
 import org.bukkit.command.Command;
@@ -12,18 +11,16 @@ import org.jetbrains.annotations.NotNull;
 public class CommandAdminclaim implements CommandExecutor {
     @Override
     public boolean onCommand(@NotNull CommandSender commandSender, @NotNull Command command, @NotNull String s, @NotNull String[] strings) {
-        if(strings.length == 1){
-            Database db = new Database("claim");
-            if(commandSender instanceof Player player){
-                db.getDatas().getValues(false).forEach((path, obj) ->{
-                    if(((Claim)db.getData(path+".claim")).getChunk().equals(player.getLocation().getChunk())){
-                            db.removeData(path);
-                            db.save();
-                        player.sendMessage(Ftion.msgf("claim", "You admin-unclaimed this chunk! §6"+player.getLocation().getChunk().getX()+" "+player.getLocation().getChunk().getZ()));
+        if (commandSender instanceof Player player) {
+            if (strings.length == 1) {
+                if (strings[0].equals("remove")) {
+                    Claim claim = Ftion.loadClaim(player.getLocation().getChunk());
+                    if (claim != null) {
+                        Ftion.removeClaim(player.getLocation().getChunk());
                     }
-                });
+                }
             }
         }
-       return false;
+        return false;
     }
 }

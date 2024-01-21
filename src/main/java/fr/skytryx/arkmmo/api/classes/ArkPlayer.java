@@ -1,6 +1,7 @@
 package fr.skytryx.arkmmo.api.classes;
 
 import fr.skytryx.arkmmo.api.Database;
+import fr.skytryx.arkmmo.api.enums.Races;
 import org.bukkit.entity.Player;
 
 import java.util.LinkedList;
@@ -14,6 +15,7 @@ public class ArkPlayer {
     Integer force = 1;
     Integer agilite = 1;
     Integer aether = 1;
+    Races race = Races.NONE;
     List<Quest> completed_quest = new LinkedList<>();
 
     Guild guild;
@@ -74,10 +76,6 @@ public class ArkPlayer {
         this.completed_quest.add(q);
     }
 
-    public Integer getXp() {
-        return this.xp;
-    }
-
     public List<Quest> getCompleted_quest() {
         return this.completed_quest;
     }
@@ -88,6 +86,14 @@ public class ArkPlayer {
 
     public void setGuild(Guild guild) {
         this.guild = guild;
+    }
+
+    public Races getRace() {
+        return race;
+    }
+
+    public void setRace(Races race) {
+        this.race = race;
     }
 
     public void save(){

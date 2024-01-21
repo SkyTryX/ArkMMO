@@ -1,9 +1,13 @@
 package fr.skytryx.arkmmo.api;
 
 import fr.skytryx.arkmmo.api.classes.ArkPlayer;
+import fr.skytryx.arkmmo.api.classes.Claim;
+import org.bukkit.Chunk;
 import org.bukkit.entity.Player;
 
 import java.util.Map;
+import java.util.UUID;
+import java.util.concurrent.atomic.AtomicReference;
 
 public class Ftion {
 
@@ -24,5 +28,33 @@ public class Ftion {
             }
         }
         throw new NullPointerException("Couldn't find ArkPlayer in playerDB");
+    }
+
+    public static Claim loadClaim(Chunk chunk){
+        Database db = new Database("claim");
+        AtomicReference<String> p = new AtomicReference<>("");
+        db.getDatas().getValues(false).forEach((path, obj) -> {
+            if (db.getData(path + ".chunk").equals(chunk)) {
+                p.set(path);
+            }
+        });
+        if(!p.get().isEmpty()){
+            return new Claim(chunk, db.getStringData(p.get()+".owner"), UUID.fromString(p.get()));
+        }
+        return null;
+    }
+
+    public static void removeClaim(Chunk chunk){
+        Database db = new Database("claim");
+        AtomicReference<String> p = new AtomicReference<>("");
+        db.getDatas().getValues(false).forEach((path, obj) -> {
+            if (db.getData(path + ".chunk").equals(chunk)) {
+                p.set(path);
+            }
+        });
+        if(!p.get().isEmpty()){
+            db.removeData(p.get());
+            db.save();
+        }
     }
 }

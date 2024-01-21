@@ -4,25 +4,26 @@ import fr.skytryx.arkmmo.api.Database;
 import org.bukkit.Chunk;
 
 import java.util.UUID;
+import java.util.concurrent.atomic.AtomicReference;
 
 public class Claim {
 
     Chunk chunk;
-    Guild owner;
+    String owner;
 
     UUID uuid;
 
-    public Claim(Chunk c, Guild o, UUID uuid){
+    public Claim(Chunk c, String o, UUID uuid){
         this.chunk = c;
         this.owner = o;
         this.uuid = uuid;
     }
 
-    public Guild getOwner(){
+    public String getOwner(){
         return this.owner;
     }
 
-    public void setOwner(Guild o){
+    public void setOwner(String o){
         this.owner = o;
     }
 

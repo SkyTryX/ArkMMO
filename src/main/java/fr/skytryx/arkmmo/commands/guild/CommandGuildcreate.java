@@ -1,6 +1,5 @@
 package fr.skytryx.arkmmo.commands.guild;
 
-import fr.skytryx.arkmmo.api.Database;
 import fr.skytryx.arkmmo.api.Ftion;
 import fr.skytryx.arkmmo.api.classes.ArkPlayer;
 import fr.skytryx.arkmmo.api.classes.Guild;
@@ -9,8 +8,6 @@ import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 import org.jetbrains.annotations.NotNull;
-
-import java.util.UUID;
 
 import static fr.skytryx.arkmmo.api.Ftion.getArkPlayer;
 

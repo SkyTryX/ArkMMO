@@ -5,6 +5,7 @@ import fr.skytryx.arkmmo.commands.claim.CommandClaim;
 import fr.skytryx.arkmmo.commands.claim.CommandUnclaim;
 import fr.skytryx.arkmmo.commands.guild.CommandGuildcreate;
 import fr.skytryx.arkmmo.events.FirstJoin;
+import fr.skytryx.arkmmo.events.SBManager;
 import org.bukkit.Bukkit;
 import org.bukkit.plugin.java.JavaPlugin;
 
@@ -21,6 +22,7 @@ public class ArkMMO extends JavaPlugin {
         Objects.requireNonNull(getCommand("guildcreate")).setExecutor(new CommandGuildcreate());
         Bukkit.getLogger().info("Loading Events");
         getServer().getPluginManager().registerEvents(new FirstJoin() ,this);
+        getServer().getPluginManager().registerEvents(new SBManager(), this);
         Bukkit.getLogger().info("Plugin Enabled");
     }
 
