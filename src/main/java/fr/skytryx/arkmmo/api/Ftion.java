@@ -24,7 +24,7 @@ public class Ftion {
                 res.setAether((Integer) db.getData(set.getKey()+".aether"));
                 res.setAgilite((Integer) db.getData(set.getKey()+".agilite"));
                 res.setXP((Integer) db.getData(set.getKey()+".xp"));
-                return (ArkPlayer)set.getValue();
+                return res;
             }
         }
         throw new NullPointerException("Couldn't find ArkPlayer in playerDB");

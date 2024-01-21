@@ -81,7 +81,12 @@ public class ArkPlayer {
     }
 
     public Guild getGuild() {
+        player.sendMessage(String.valueOf(this.guild));
+        if(this.guild == null){
+            return new Guild();
+        }
         return this.guild;
+
     }
 
     public void setGuild(Guild guild) {
@@ -102,6 +107,8 @@ public class ArkPlayer {
         db.addData(this.player.getUniqueId()+".force", this.getForce());
         db.addData(this.player.getUniqueId()+".agilite", this.getAgilite());
         db.addData(this.player.getUniqueId()+".aether", this.getAether());
+        db.addData(this.player.getUniqueId()+".guild", this.getGuild().getName());
+        db.addData(this.player.getUniqueId()+".xp", this.getXP());
         db.addData(this.player.getUniqueId()+".completed_quest", this.getCompleted_quest());
         db.save();
     }

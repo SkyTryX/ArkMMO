@@ -8,17 +8,21 @@ import java.util.List;
 public class Guild {
 
     String name;
-    ArkPlayer owner;
-    List<ArkPlayer> members = new LinkedList<>();
-    List<Claim> claims = new LinkedList<>();
+    String owner;
+    List<String> members = new LinkedList<>();
+    List<String> claims = new LinkedList<>();
     Integer size = 15;
     Integer level = 0;
     Integer xp = 0;
 
     public Guild(String n, ArkPlayer o){
         this.name = n;
-        this.owner = o;
-        this.members.add(o);
+        this.owner = String.valueOf(o.getPlayer().getUniqueId());
+        this.members.add(o.getPlayer().getUniqueId().toString());
+    }
+
+    public Guild(){
+        this.name = "None";
     }
 
     public Integer getSize(){
@@ -49,40 +53,40 @@ public class Guild {
         this.xp = x;
     }
 
-    public ArkPlayer getOwner(){
+    public String getOwner(){
         return this.owner;
     }
 
     public void setOwner(ArkPlayer o){
-        this.owner = o;
+        this.owner = o.getPlayer().getUniqueId().toString();
     }
 
     public void addMembers(ArkPlayer p){
-        this.members.add(p);
+        this.members.add(p.getPlayer().getUniqueId().toString());
     }
 
     public void removeMembers(ArkPlayer p){
-        this.members.remove(p);
+        this.members.remove(p.getPlayer().getUniqueId().toString());
     }
 
-    public List<ArkPlayer> getMembers(){
+    public List<String> getMembers(){
         return this.members;
     }
 
     public void addClaims(Claim c){
-        this.claims.add(c);
+        this.claims.add(c.getUuid().toString());
     }
 
     public void removeClaims(Claim c){
-        this.claims.remove(c);
+        this.claims.remove(c.getUuid().toString());
     }
 
-    public List<Claim> getClaims(){
+    public List<String> getClaims(){
         return this.claims;
     }
 
     public void save(){
-        Database db = new Database("player");
+        Database db = new Database("guild");
         db.addData(this.getName()+".claims", this.getClaims());
         db.addData(this.getName()+".level", this.getLevel());
         db.addData(this.getName()+".members", this.getMembers());

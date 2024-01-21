@@ -59,10 +59,11 @@ public class SBManager implements Listener {
         event.getPlayer().setScoreboard(sb);
 
         int id = Bukkit.getScheduler().scheduleSyncRepeatingTask(Objects.requireNonNull(Bukkit.getPluginManager().getPlugin("ArkMMO")), ()->{
-            race.setSuffix("§b"+(arkPlayer.getRace()));
-            niveau.setSuffix("§b"+(arkPlayer.getXP()));
-            gold.setSuffix("§b"+(arkPlayer.getGold()));
-            guild.setSuffix("§b"+(arkPlayer.getGuild().getName()));
+            ArkPlayer aPlayer = Ftion.getArkPlayer(event.getPlayer());
+            race.setSuffix("§b"+(aPlayer.getRace()));
+            niveau.setSuffix("§b"+(aPlayer.getXP()));
+            gold.setSuffix("§b"+(aPlayer.getGold()));
+            guild.setSuffix("§b"+(aPlayer.getGuild().getName()));
         }, 20L, 20L);
         score_list.put(event.getPlayer(), id);
     }
