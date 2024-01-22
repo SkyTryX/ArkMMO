@@ -12,3 +12,9 @@ commands:
     permission: arkmmo.adminclaim
   guildcreate:
     description: Create a guild
+  guildinvite:
+    description: Invite someone to your guild
+  guildjoin:
+    description: Join a guild you were invited to
+  guildmsg:
+    description: send a message in your guild chat!

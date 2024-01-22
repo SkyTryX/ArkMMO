@@ -81,7 +81,6 @@ public class ArkPlayer {
     }
 
     public Guild getGuild() {
-        player.sendMessage(String.valueOf(this.guild));
         if(this.guild == null){
             return new Guild();
         }

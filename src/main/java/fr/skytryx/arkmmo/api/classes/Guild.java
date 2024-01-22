@@ -23,6 +23,7 @@ public class Guild {
 
     public Guild(){
         this.name = "None";
+        this.owner = "None";
     }
 
     public Integer getSize(){

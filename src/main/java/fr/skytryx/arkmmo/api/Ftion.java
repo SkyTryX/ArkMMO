@@ -2,6 +2,8 @@ package fr.skytryx.arkmmo.api;
 
 import fr.skytryx.arkmmo.api.classes.ArkPlayer;
 import fr.skytryx.arkmmo.api.classes.Claim;
+import fr.skytryx.arkmmo.api.classes.Guild;
+import org.bukkit.Bukkit;
 import org.bukkit.Chunk;
 import org.bukkit.entity.Player;
 
@@ -15,6 +17,32 @@ public class Ftion {
         return "§c["+prefix+"] §b"+msg;
     }
 
+    public static ArkPlayer getWithoutGuildArkPlayer(Player player){
+        Database db = new Database("player");
+        for (Map.Entry<String, Object> set :db.getDatas().getValues(false).entrySet()){
+            if(player.getUniqueId().toString().equals(set.getKey())){
+                ArkPlayer res = new ArkPlayer(player);
+                res.setGold((Integer) db.getData(set.getKey()+".gold"));
+                res.setAether((Integer) db.getData(set.getKey()+".aether"));
+                res.setAgilite((Integer) db.getData(set.getKey()+".agilite"));
+                res.setXP((Integer) db.getData(set.getKey()+".xp"));
+                return res;
+            }
+        }
+        throw new NullPointerException("Couldn't find ArkPlayer in playerDB");
+    }
+    public static Guild getGuildFromName(String name){
+        Database db = new Database("guild");
+        for (Map.Entry<String, Object> set :db.getDatas().getValues(false).entrySet()) {
+            if (name.equals(set.getKey())) {
+                Guild res = new Guild(name, getWithoutGuildArkPlayer((Player) Bukkit.getOfflinePlayer(UUID.fromString(db.getStringData(set.getKey() + ".owner")))));
+                res.setXP((Integer) db.getData(set.getKey() + ".xp"));
+                res.setLevel((Integer) db.getData(set.getKey() + ".level"));
+                return res;
+            }
+        }
+        return new Guild();
+    }
     public static ArkPlayer getArkPlayer(Player player){
         Database db = new Database("player");
         for (Map.Entry<String, Object> set :db.getDatas().getValues(false).entrySet()){
@@ -24,6 +52,7 @@ public class Ftion {
                 res.setAether((Integer) db.getData(set.getKey()+".aether"));
                 res.setAgilite((Integer) db.getData(set.getKey()+".agilite"));
                 res.setXP((Integer) db.getData(set.getKey()+".xp"));
+                res.setGuild(getGuildFromName(db.getStringData(set.getKey()+".guild")));
                 return res;
             }
         }
@@ -55,6 +84,15 @@ public class Ftion {
         if(!p.get().isEmpty()){
             db.removeData(p.get());
             db.save();
+        }
+    }
+
+    public static void broadcastGuild(Guild guild, String msg){
+        for (String member : guild.getMembers()) {
+            Player player = Bukkit.getPlayer(UUID.fromString(member));
+            if(player != null){
+                player.sendMessage(msg);
+            }
         }
     }
 }
