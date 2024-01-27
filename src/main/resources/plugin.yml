@@ -18,3 +18,9 @@ commands:
     description: Join a guild you were invited to
   guildmsg:
     description: send a message in your guild chat!
+  guildinfo:
+    description: get info about a guild
+  guildleave:
+    description: leave a guild
+  guildkick:
+    description: Kick a player from your guild

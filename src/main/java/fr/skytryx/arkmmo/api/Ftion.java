@@ -56,7 +56,7 @@ public class Ftion {
                 return res;
             }
         }
-        throw new NullPointerException("Couldn't find ArkPlayer in playerDB");
+        return null;
     }
 
     public static Claim loadClaim(Chunk chunk){

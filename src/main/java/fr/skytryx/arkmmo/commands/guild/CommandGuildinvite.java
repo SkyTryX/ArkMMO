@@ -25,10 +25,12 @@ public class CommandGuildinvite implements CommandExecutor {
             if(guild.getOwner().equals(player.getUniqueId().toString())){
                 Player target = Bukkit.getPlayer(strings[0]);
                 if(target != null){
-                    invites_list.put(player, guild.getName());
+                    invites_list.put(target, guild.getName());
+                    player.sendMessage(Ftion.msgf("Guild", "You have invited "+strings[0]+" to join the guild"));
+
                     target.sendMessage(Ftion.msgf("Guild", "You have been invited to join the guild §6"+guild.getName()));
                     TextComponent message = new TextComponent("§a[Accept]");
-                    message.setClickEvent(new ClickEvent(ClickEvent.Action.RUN_COMMAND, "guildjoin "+guild.getName()));
+                    message.setClickEvent(new ClickEvent(ClickEvent.Action.SUGGEST_COMMAND, "guildjoin "+guild.getName()));
                     message.setHoverEvent(new HoverEvent(HoverEvent.Action.SHOW_TEXT, new ComponentBuilder("Accept!").create()));
                     target.spigot().sendMessage(message);
                 }
