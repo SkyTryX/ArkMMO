@@ -38,6 +38,10 @@ public class Ftion {
                 Guild res = new Guild(name, getWithoutGuildArkPlayer((Player) Bukkit.getOfflinePlayer(UUID.fromString(db.getStringData(set.getKey() + ".owner")))));
                 res.setXP((Integer) db.getData(set.getKey() + ".xp"));
                 res.setLevel((Integer) db.getData(set.getKey() + ".level"));
+                for (Object o : db.getDataList(set.getKey() + ".members")) {
+                    ArkPlayer temp = getWithoutGuildArkPlayer((Player)Bukkit.getOfflinePlayer(UUID.fromString((String) o)));
+                    if(!res.getMembers().contains(String.valueOf(temp.getPlayer().getUniqueId()))) res.addMembers(temp);
+                }
                 return res;
             }
         }

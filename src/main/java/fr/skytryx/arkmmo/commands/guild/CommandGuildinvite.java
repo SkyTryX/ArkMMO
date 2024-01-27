@@ -14,6 +14,7 @@ import org.bukkit.entity.Player;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.HashMap;
+import java.util.Objects;
 
 public class CommandGuildinvite implements CommandExecutor {
 
@@ -21,7 +22,7 @@ public class CommandGuildinvite implements CommandExecutor {
     @Override
     public boolean onCommand(@NotNull CommandSender commandSender, @NotNull Command command, @NotNull String s, @NotNull String[] strings) {
         if(commandSender instanceof Player player && strings.length == 1){
-            Guild guild = Ftion.getArkPlayer(player).getGuild();
+            Guild guild = Objects.requireNonNull(Ftion.getArkPlayer(player)).getGuild();
             if(guild.getOwner().equals(player.getUniqueId().toString())){
                 Player target = Bukkit.getPlayer(strings[0]);
                 if(target != null){
@@ -30,8 +31,8 @@ public class CommandGuildinvite implements CommandExecutor {
 
                     target.sendMessage(Ftion.msgf("Guild", "You have been invited to join the guild §6"+guild.getName()));
                     TextComponent message = new TextComponent("§a[Accept]");
-                    message.setClickEvent(new ClickEvent(ClickEvent.Action.SUGGEST_COMMAND, "guildjoin "+guild.getName()));
-                    message.setHoverEvent(new HoverEvent(HoverEvent.Action.SHOW_TEXT, new ComponentBuilder("Accept!").create()));
+                    message.setClickEvent(new ClickEvent(ClickEvent.Action.SUGGEST_COMMAND, "/guildjoin "+guild.getName()));
+                    message.setHoverEvent(new HoverEvent(HoverEvent.Action.SHOW_TEXT, new ComponentBuilder("Click to accept!").create()));
                     target.spigot().sendMessage(message);
                 }
             }

@@ -16,13 +16,15 @@ public class CommandGuildleave implements CommandExecutor {
     public boolean onCommand(@NotNull CommandSender commandSender, @NotNull Command command, @NotNull String s, @NotNull String[] strings) {
         if(commandSender instanceof Player player){
             ArkPlayer arkPlayer = Ftion.getArkPlayer(player);
-            if(!arkPlayer.getGuild().getName().equals("None")){
-                Guild guild = arkPlayer.getGuild();
-                broadcastGuild(guild, Ftion.msgf("Guild", "§c"+player.getName()+" left the guild"));
-                guild.removeMembers(arkPlayer);
-                arkPlayer.setGuild(new Guild());
-                arkPlayer.save();
-                guild.save();
+            if(arkPlayer != null && !arkPlayer.getGuild().getName().equals("None")){
+                if(!arkPlayer.getGuild().getOwner().equals(String.valueOf(player.getUniqueId()))){
+                    Guild guild = arkPlayer.getGuild();
+                    broadcastGuild(guild, Ftion.msgf("Guild", "§c"+player.getName()+" left the guild"));
+                    guild.removeMembers(arkPlayer);
+                    arkPlayer.setGuild(new Guild());
+                    arkPlayer.save();
+                    guild.save();
+                } else player.sendMessage(Ftion.msgf("Guild", "§cYou can't leave whilst being the owner of the guild"));
             } else player.sendMessage(Ftion.msgf("Guild", "§cYou are not in a guild"));
         }
         return false;

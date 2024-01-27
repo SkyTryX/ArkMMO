@@ -18,7 +18,7 @@ public class CommandGuildjoin implements CommandExecutor {
             if(CommandGuildinvite.invites_list.containsKey(player)){
                 Guild guild = Ftion.getGuildFromName(CommandGuildinvite.invites_list.get(player));
                 ArkPlayer arkPlayer = Ftion.getArkPlayer(player);
-                if(arkPlayer.getGuild().getName().equals("None")){
+                if(arkPlayer != null && arkPlayer.getGuild().getName().equals("None")){
                     guild.addMembers(arkPlayer);
                     arkPlayer.setGuild(guild);
                     arkPlayer.save();

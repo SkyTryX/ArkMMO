@@ -20,7 +20,7 @@ public class CommandGuildkick implements CommandExecutor {
             if(kicked_player != null){
                 if(kicked_player.getGuild().getOwner().equals(String.valueOf(player.getUniqueId()))){
                     Guild guild = kicked_player.getGuild();
-                    broadcastGuild(guild, Ftion.msgf("Guild", "§c"+player.getName()+" has been kicked from the guild by "+player.getName()));
+                    broadcastGuild(guild, Ftion.msgf("Guild", "§c"+kicked_player.getPlayer().getName()+" has been kicked from the guild by "+player.getName()));
                     guild.removeMembers(kicked_player);
                     kicked_player.setGuild(new Guild());
                     kicked_player.save();

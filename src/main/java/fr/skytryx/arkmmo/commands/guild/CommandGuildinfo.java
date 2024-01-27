@@ -9,13 +9,14 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 import org.jetbrains.annotations.NotNull;
 
+import java.util.Objects;
 import java.util.UUID;
 
 public class CommandGuildinfo implements CommandExecutor {
     @Override
     public boolean onCommand(@NotNull CommandSender commandSender, @NotNull Command command, @NotNull String s, @NotNull String[] strings) {
         if (commandSender instanceof Player player) {
-            Guild guild = Ftion.getArkPlayer(player).getGuild();
+            Guild guild = Objects.requireNonNull(Ftion.getArkPlayer(player)).getGuild();
             if (guild.getName().equals("None") && strings.length >= 1) {
                 guild = Ftion.getGuildFromName(strings[0]);
                 if (!guild.getName().equals("None")) {

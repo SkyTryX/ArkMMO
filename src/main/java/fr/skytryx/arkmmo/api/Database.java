@@ -5,6 +5,7 @@ import org.bukkit.configuration.file.YamlConfiguration;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.List;
 import java.util.Objects;
 
 public class Database {
@@ -44,6 +45,11 @@ public class Database {
     public String getStringData(String path){
         return this.data.getString(path);
     }
+
+    public List<?> getDataList(String path){
+        return this.data.getList(path);
+    }
+
 
     public Boolean containsData(String path){
         return this.data.contains(path);
