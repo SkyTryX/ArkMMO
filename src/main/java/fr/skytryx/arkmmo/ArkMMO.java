@@ -15,7 +15,7 @@ public class ArkMMO extends JavaPlugin {
 
     @Override
     public void onEnable() {
-        Bukkit.getLogger().info("Loading Commands");
+        Bukkit.getLogger().info("[ArkMMO] Loading Commands");
         final long start1 = System.currentTimeMillis();
         Objects.requireNonNull(getCommand("claim")).setExecutor(new CommandClaim());
         Objects.requireNonNull(getCommand("unclaim")).setExecutor(new CommandUnclaim());
@@ -28,12 +28,13 @@ public class ArkMMO extends JavaPlugin {
         Objects.requireNonNull(getCommand("guildinfo")).setExecutor(new CommandGuildinfo());
         Objects.requireNonNull(getCommand("guildleave")).setExecutor(new CommandGuildleave());
         Objects.requireNonNull(getCommand("guildkick")).setExecutor(new CommandGuildkick());
-        Bukkit.getLogger().info("Loaded commands ("+(System.currentTimeMillis()-start1)+")! Now loading Events");
+        Objects.requireNonNull(getCommand("guilddisband")).setExecutor(new CommandGuilddisband());
+        Bukkit.getLogger().info("[ArkMMO] Loaded commands ("+(System.currentTimeMillis()-start1)+"ms)! Now loading Events");
         final long start2 = System.currentTimeMillis();
         getServer().getPluginManager().registerEvents(new FirstJoin() ,this);
         getServer().getPluginManager().registerEvents(new SBManager(), this);
-        Bukkit.getLogger().info("Loaded events ("+(System.currentTimeMillis()-start2)+")");
-        Bukkit.getLogger().info("Plugin Enabled ("+(System.currentTimeMillis()-start1)+")");
+        Bukkit.getLogger().info("[ArkMMO] Loaded events ("+(System.currentTimeMillis()-start2)+"ms)");
+        Bukkit.getLogger().info("[ArkMMO] Plugin Enabled ("+(System.currentTimeMillis()-start1)+"ms)");
     }
 
     @Override

@@ -24,3 +24,5 @@ commands:
     description: leave a guild
   guildkick:
     description: Kick a player from your guild
+  guilddisband:
+    description: Disband your own guild
