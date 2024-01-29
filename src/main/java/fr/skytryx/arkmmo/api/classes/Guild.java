@@ -92,8 +92,12 @@ public class Guild {
         return this.moderators;
     }
 
-    public void addModerators(ArkPlayer p){
+    public void addModerator(ArkPlayer p){
         this.moderators.add(p.getPlayer().getUniqueId().toString());
+    }
+
+    public void removeModerator(ArkPlayer p){
+        this.moderators.remove(p.getPlayer().getUniqueId().toString());
     }
 
     public void save(){

@@ -25,7 +25,7 @@ public class CommandGuildkick implements CommandExecutor {
                     kicked_player.setGuild(new Guild());
                     kicked_player.save();
                     guild.save();
-                } else player.sendMessage(Ftion.msgf("Guild", "§cYou are not in a guild"));
+                } else player.sendMessage(Ftion.msgf("Guild", "§cYou don't have the permission to do that!"));
             }
         }
         return false;

@@ -8,6 +8,7 @@ import org.bukkit.Chunk;
 import org.bukkit.entity.Player;
 
 import java.util.Map;
+import java.util.Objects;
 import java.util.UUID;
 import java.util.concurrent.atomic.AtomicReference;
 
@@ -35,16 +36,16 @@ public class Ftion {
         Database db = new Database("guild");
         for (Map.Entry<String, Object> set :db.getDatas().getValues(false).entrySet()) {
             if (name.equals(set.getKey())) {
-                Guild res = new Guild(name, getWithoutGuildArkPlayer((Player) Bukkit.getOfflinePlayer(UUID.fromString(db.getStringData(set.getKey() + ".owner")))));
+                Guild res = new Guild(name, Objects.requireNonNull(getWithoutGuildArkPlayer((Player) Bukkit.getOfflinePlayer(UUID.fromString(db.getStringData(set.getKey() + ".owner"))))));
                 res.setXP((Integer) db.getData(set.getKey() + ".xp"));
                 res.setLevel((Integer) db.getData(set.getKey() + ".level"));
                 for (Object o : db.getDataList(set.getKey() + ".members")) {
                     ArkPlayer temp = getWithoutGuildArkPlayer((Player)Bukkit.getOfflinePlayer(UUID.fromString((String) o)));
-                    if(!res.getMembers().contains(String.valueOf(temp.getPlayer().getUniqueId()))) res.addMembers(temp);
+                    if(temp != null && !res.getMembers().contains(String.valueOf(temp.getPlayer().getUniqueId()))) res.addMembers(temp);
                 }
                 for (Object o : db.getDataList(set.getKey() + ".moderators")) {
                     ArkPlayer temp = getWithoutGuildArkPlayer((Player)Bukkit.getOfflinePlayer(UUID.fromString((String) o)));
-                    if(!res.getModerators().contains(String.valueOf(temp.getPlayer().getUniqueId()))) res.addModerators(temp);
+                    if(temp != null && !res.getModerators().contains(String.valueOf(temp.getPlayer().getUniqueId()))) res.addModerator(temp);
                 }
                 return res;
             }
