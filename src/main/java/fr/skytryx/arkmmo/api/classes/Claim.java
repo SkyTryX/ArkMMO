@@ -4,7 +4,6 @@ import fr.skytryx.arkmmo.api.Database;
 import org.bukkit.Chunk;
 
 import java.util.UUID;
-import java.util.concurrent.atomic.AtomicReference;
 
 public class Claim {
 
@@ -38,7 +37,8 @@ public class Claim {
     public void save(){
         Database db = new Database("claim");
         db.addData(this.getUuid()+".owner", this.getOwner());
-        db.addData(this.getUuid()+".chunk", this.getChunk());
+        db.addData(this.getUuid()+".chunk_x", this.getChunk().getX());
+        db.addData(this.getUuid()+".chunk_z", this.getChunk().getZ());
         db.save();
     }
 }

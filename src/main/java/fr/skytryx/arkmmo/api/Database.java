@@ -50,6 +50,10 @@ public class Database {
         return this.data.getList(path);
     }
 
+    public Integer getDataInt(String path){
+        return this.data.getInt(path);
+    }
+
 
     public Boolean containsData(String path){
         return this.data.contains(path);

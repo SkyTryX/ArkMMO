@@ -1,6 +1,7 @@
 package fr.skytryx.arkmmo.commands.claim;
 
 import fr.skytryx.arkmmo.api.Ftion;
+import fr.skytryx.arkmmo.api.classes.ArkPlayer;
 import fr.skytryx.arkmmo.api.classes.Claim;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
@@ -12,8 +13,9 @@ public class CommandUnclaim implements CommandExecutor {
     @Override
     public boolean onCommand(@NotNull CommandSender commandSender, @NotNull Command command, @NotNull String s, @NotNull String[] strings) {
         if(commandSender instanceof Player player){
-            Claim claim = Ftion.loadClaim(player.getLocation().getChunk());
-            if(claim != null && claim.getOwner().equals(player.getName())){
+            Claim claim = Ftion.loadClaim(player.getLocation().getChunk(), player.getWorld());
+            ArkPlayer arkPlayer = Ftion.getArkPlayer(player);
+            if(arkPlayer != null && claim != null && claim.getOwner().equals(arkPlayer.getGuild().getName())){
                 Ftion.removeClaim(player.getLocation().getChunk());
             }
         }

@@ -5,6 +5,7 @@ import fr.skytryx.arkmmo.api.classes.Claim;
 import fr.skytryx.arkmmo.api.classes.Guild;
 import org.bukkit.Bukkit;
 import org.bukkit.Chunk;
+import org.bukkit.World;
 import org.bukkit.entity.Player;
 
 import java.util.Map;
@@ -68,11 +69,11 @@ public class Ftion {
         return null;
     }
 
-    public static Claim loadClaim(Chunk chunk){
+    public static Claim loadClaim(Chunk chunk, World world){
         Database db = new Database("claim");
         AtomicReference<String> p = new AtomicReference<>("");
         db.getDatas().getValues(false).forEach((path, obj) -> {
-            if (db.getData(path + ".chunk").equals(chunk)) {
+            if(world.getChunkAt(db.getDataInt(path + ".chunk_x"), db.getDataInt(path + ".chunk_z")).equals(chunk)){
                 p.set(path);
             }
         });
