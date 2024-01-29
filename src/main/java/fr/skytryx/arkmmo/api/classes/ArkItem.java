@@ -1,9 +1,12 @@
 package fr.skytryx.arkmmo.api.classes;
 
-import fr.skytryx.arkmmo.api.enums.PowerType;
+import fr.skytryx.arkmmo.api.enums.Rarity;
 import org.bukkit.Material;
-import org.bukkit.enchantments.Enchantment;
+import org.bukkit.inventory.ItemFlag;
+import org.bukkit.inventory.ItemStack;
+import org.bukkit.inventory.meta.ItemMeta;
 
+import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -12,45 +15,19 @@ public class ArkItem {
     Material material;
     String[] lore;
     String name;
-    Boolean is_glowing;
-    PowerType power;
-    List<ArkEnchant> arkEnchants = new LinkedList<>();
-    List<Enchantment> enchants = new LinkedList<>();
+    Rarity rarity;
 
-    public ArkItem(Material m, String n, PowerType p){
+    public ArkItem(Material m, String n, Rarity r, String[] l){
         this.material = m;
         this.name = n;
-        this.power = p;
-        this.is_glowing = false;
-        this.lore = new String[]{""};
-    }
-
-    public ArkItem(Material m, String n, PowerType p, String[] l, Boolean glow){
-        this.material = m;
-        this.name = n;
-        this.power = p;
-        this.is_glowing = glow;
+        this.rarity = r;
         this.lore = l;
     }
 
-    public Boolean getIs_glowing() {
-        return this.is_glowing;
-    }
 
-    public List<ArkEnchant> getArkEnchants() {
-        return this.arkEnchants;
-    }
-
-    public List<Enchantment> getEnchants() {
-        return this.enchants;
-    }
 
     public Material getMaterial() {
         return this.material;
-    }
-
-    public PowerType getPower() {
-        return this.power;
     }
 
     public String getName() {
@@ -61,11 +38,31 @@ public class ArkItem {
         return this.lore;
     }
 
-    public void addArkEnchant(ArkEnchant e){
-        this.arkEnchants.add(e);
+    public Rarity getRarity() {
+        return rarity;
     }
 
-    public void addEnchant(Enchantment e){
-        this.enchants.add(e);
+    public ItemStack getAsItem() {
+        ItemStack item = new ItemStack(this.getMaterial());
+        ItemMeta itemMeta = item.getItemMeta();
+        assert itemMeta != null;
+        String color;
+        if(this.getRarity().equals(Rarity.COMMON)) color = "§f";
+        else if(this.getRarity().equals(Rarity.UNCOMMON)) color = "§a";
+        else if(this.getRarity().equals(Rarity.RARE)) color = "§b";
+        else if(this.getRarity().equals(Rarity.EPIC)) color = "§d";
+        else if(this.getRarity().equals(Rarity.LEGENDARY)) color = "§6";
+        else if(this.getRarity().equals(Rarity.MYTHIC)) color = "§e";
+        else color = "§7";
+        List<String> l = new LinkedList<>();
+        l.add("");
+        l.addAll(Arrays.stream(this.getLore()).toList());
+        l.add("");
+        l.add(color+"§l"+this.getRarity());
+        itemMeta.setDisplayName(color+this.getName());
+        itemMeta.setLore(l);
+        itemMeta.addItemFlags(ItemFlag.HIDE_ATTRIBUTES);
+        item.setItemMeta(itemMeta);
+        return item;
     }
 }

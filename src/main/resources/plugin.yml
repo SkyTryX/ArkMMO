@@ -30,3 +30,6 @@ commands:
     description: Promote someone in your guild
   guilddemote:
     description: Demote someone in your guild
+  giveitem:
+    description: To give yourself special items
+    permission: arkmmo.giveitem
