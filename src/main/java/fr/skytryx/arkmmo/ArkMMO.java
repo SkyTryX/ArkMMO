@@ -29,6 +29,8 @@ public class ArkMMO extends JavaPlugin {
         Objects.requireNonNull(getCommand("guildleave")).setExecutor(new CommandGuildleave());
         Objects.requireNonNull(getCommand("guildkick")).setExecutor(new CommandGuildkick());
         Objects.requireNonNull(getCommand("guilddisband")).setExecutor(new CommandGuilddisband());
+        Objects.requireNonNull(getCommand("guildpromote")).setExecutor(new CommandGuildpromote());
+        Objects.requireNonNull(getCommand("guilddemote")).setExecutor(new CommandGuilddemote());
         Bukkit.getLogger().info("[ArkMMO] Loaded commands ("+(System.currentTimeMillis()-start1)+"ms)! Now loading Events");
         final long start2 = System.currentTimeMillis();
         getServer().getPluginManager().registerEvents(new FirstJoin() ,this);

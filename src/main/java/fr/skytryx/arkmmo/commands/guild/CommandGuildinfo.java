@@ -24,24 +24,35 @@ public class CommandGuildinfo implements CommandExecutor {
                     for (String member : guild.getMembers()) {
                         list_member.append(" ").append(Bukkit.getOfflinePlayer(UUID.fromString(member)).getName()).append(",");
                     }
+                    StringBuilder list_mod = new StringBuilder();
+                    for (String mod : guild.getModerators()) {
+                        list_mod.append(" ").append(Bukkit.getOfflinePlayer(UUID.fromString(mod)).getName()).append(",");
+                    }
                     player.sendMessage("§6§lINFO GUILD " + guild.getName() + "\n" +
-                            "§3Owner: §b" + Bukkit.getOfflinePlayer(UUID.fromString(guild.getOwner())).getName() + "\n" +
                             "§3Level: §b" + guild.getLevel() + "\n" +
                             "§3XP: §b" + guild.getXP() + "\n" +
-                            "§3Size: §b15\n" +
-                            "§3Members:§b" + list_member);
+                            "\n"+
+                            "§3Owner: §b" + Bukkit.getOfflinePlayer(UUID.fromString(guild.getOwner())).getName() + "\n" +
+                            "§3Moderators: §b"+list_mod+"\n"+
+                            "§3Members: §b" + list_member);
                 }
             } else if (!guild.getName().equals("None")) {
                 StringBuilder list_member = new StringBuilder();
                 for (String member : guild.getMembers()) {
                     list_member.append(" ").append(Bukkit.getOfflinePlayer(UUID.fromString(member)).getName()).append(",");
                 }
+
+                StringBuilder list_mod = new StringBuilder();
+                for (String mod : guild.getModerators()) {
+                    list_mod.append(" ").append(Bukkit.getOfflinePlayer(UUID.fromString(mod)).getName()).append(",");
+                }
                 player.sendMessage("§6§lINFO GUILD " + guild.getName() + "\n" +
-                        "§3Owner: §b" + Bukkit.getOfflinePlayer(UUID.fromString(guild.getOwner())).getName() + "\n" +
                         "§3Level: §b" + guild.getLevel() + "\n" +
                         "§3XP: §b" + guild.getXP() + "\n" +
-                        "§3Size: §b15\n" +
-                        "§3Members:§b" + list_member);
+                        "\n"+
+                        "§3Owner: §b" + Bukkit.getOfflinePlayer(UUID.fromString(guild.getOwner())).getName() + "\n" +
+                        "§3Moderators: §b"+list_mod+"\n"+
+                        "§3Members: §b" + list_member);
             }
         }
         return false;

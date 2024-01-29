@@ -11,6 +11,7 @@ public class Guild {
     String owner;
     List<String> members = new LinkedList<>();
     List<String> claims = new LinkedList<>();
+    List<String> moderators = new LinkedList<>();
     Integer size = 15;
     Integer level = 0;
     Integer xp = 0;
@@ -19,6 +20,7 @@ public class Guild {
         this.name = n;
         this.owner = String.valueOf(o.getPlayer().getUniqueId());
         this.members.add(o.getPlayer().getUniqueId().toString());
+        this.moderators.add(o.getPlayer().getUniqueId().toString());
     }
 
     public Guild(){
@@ -86,6 +88,14 @@ public class Guild {
         return this.claims;
     }
 
+    public List<String> getModerators() {
+        return this.moderators;
+    }
+
+    public void addModerators(ArkPlayer p){
+        this.moderators.add(p.getPlayer().getUniqueId().toString());
+    }
+
     public void save(){
         Database db = new Database("guild");
         db.addData(this.getName()+".claims", this.getClaims());
@@ -94,6 +104,7 @@ public class Guild {
         db.addData(this.getName()+".owner", this.getOwner());
         db.addData(this.getName()+".size", this.getSize());
         db.addData(this.getName()+".xp", this.getXP());
+        db.addData(this.getName()+".moderators", this.getModerators());
         db.save();
     }
 }

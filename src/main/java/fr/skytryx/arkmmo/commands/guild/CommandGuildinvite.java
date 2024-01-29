@@ -23,7 +23,7 @@ public class CommandGuildinvite implements CommandExecutor {
     public boolean onCommand(@NotNull CommandSender commandSender, @NotNull Command command, @NotNull String s, @NotNull String[] strings) {
         if(commandSender instanceof Player player && strings.length == 1){
             Guild guild = Objects.requireNonNull(Ftion.getArkPlayer(player)).getGuild();
-            if(guild.getOwner().equals(player.getUniqueId().toString())){
+            if(guild.getOwner().equals(player.getUniqueId().toString()) || guild.getModerators().contains(player.getUniqueId().toString())){
                 Player target = Bukkit.getPlayer(strings[0]);
                 if(target != null){
                     invites_list.put(target, guild.getName());

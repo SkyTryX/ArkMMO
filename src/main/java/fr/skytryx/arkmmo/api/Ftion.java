@@ -29,7 +29,7 @@ public class Ftion {
                 return res;
             }
         }
-        throw new NullPointerException("Couldn't find ArkPlayer in playerDB");
+        return null;
     }
     public static Guild getGuildFromName(String name){
         Database db = new Database("guild");
@@ -41,6 +41,10 @@ public class Ftion {
                 for (Object o : db.getDataList(set.getKey() + ".members")) {
                     ArkPlayer temp = getWithoutGuildArkPlayer((Player)Bukkit.getOfflinePlayer(UUID.fromString((String) o)));
                     if(!res.getMembers().contains(String.valueOf(temp.getPlayer().getUniqueId()))) res.addMembers(temp);
+                }
+                for (Object o : db.getDataList(set.getKey() + ".moderators")) {
+                    ArkPlayer temp = getWithoutGuildArkPlayer((Player)Bukkit.getOfflinePlayer(UUID.fromString((String) o)));
+                    if(!res.getModerators().contains(String.valueOf(temp.getPlayer().getUniqueId()))) res.addModerators(temp);
                 }
                 return res;
             }

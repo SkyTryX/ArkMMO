@@ -18,8 +18,8 @@ public class CommandGuildkick implements CommandExecutor {
         if(commandSender instanceof Player player && strings.length == 1){
             ArkPlayer kicked_player = Ftion.getArkPlayer((Player)Bukkit.getOfflinePlayer(strings[0]));
             if(kicked_player != null){
-                if(kicked_player.getGuild().getOwner().equals(String.valueOf(player.getUniqueId()))){
-                    Guild guild = kicked_player.getGuild();
+                Guild guild = kicked_player.getGuild();
+                if(guild.getOwner().equals(String.valueOf(player.getUniqueId())) || guild.getModerators().contains(player.getUniqueId().toString())){
                     broadcastGuild(guild, Ftion.msgf("Guild", "§c"+kicked_player.getPlayer().getName()+" has been kicked from the guild by "+player.getName()));
                     guild.removeMembers(kicked_player);
                     kicked_player.setGuild(new Guild());

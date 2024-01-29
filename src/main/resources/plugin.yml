@@ -26,3 +26,7 @@ commands:
     description: Kick a player from your guild
   guilddisband:
     description: Disband your own guild
+  guildpromote:
+    description: Promote someone in your guild
+  guilddemote:
+    description: Demote someone in your guild
