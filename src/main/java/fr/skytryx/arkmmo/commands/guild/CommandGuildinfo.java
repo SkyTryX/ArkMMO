@@ -53,7 +53,7 @@ public class CommandGuildinfo implements CommandExecutor {
                         "§3Owner: §b" + Bukkit.getOfflinePlayer(UUID.fromString(guild.getOwner())).getName() + "\n" +
                         "§3Moderators: §b"+list_mod+"\n"+
                         "§3Members: §b" + list_member);
-            }
+            } else player.sendMessage(Ftion.msgf("Guild", "§cGuild not found"));
         }
         return false;
     }

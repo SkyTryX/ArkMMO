@@ -26,7 +26,7 @@ public class CommandGuildpromote implements CommandExecutor {
                 Guild guild = promoted.getGuild();
                 if(guild.getOwner().equals(String.valueOf(player.getUniqueId())) && !guild.getModerators().contains(String.valueOf(promoted.getPlayer().getUniqueId()))) {
                     guild.addModerator(promoted);
-                    broadcastGuild(guild, Ftion.msgf("Guild", "§c" + promoted.getPlayer().getName() + " has been promoted to moderator in the guild by " + player.getName()));
+                    broadcastGuild(guild, Ftion.msgf("Guild", promoted.getPlayer().getName() + " has been promoted to moderator in the guild by " + player.getName()));
                     guild.save();
                 } else if(guild.getOwner().equals(String.valueOf(player.getUniqueId())) && guild.getModerators().contains(String.valueOf(promoted.getPlayer().getUniqueId()))){
                     if(confirmation.contains(player)){
