@@ -83,11 +83,11 @@ public class Ftion {
         return null;
     }
 
-    public static void removeClaim(Chunk chunk){
+    public static void removeClaim(Chunk chunk, World world){
         Database db = new Database("claim");
         AtomicReference<String> p = new AtomicReference<>("");
         db.getDatas().getValues(false).forEach((path, obj) -> {
-            if (db.getData(path + ".chunk").equals(chunk)) {
+            if (world.getChunkAt(db.getDataInt(path + ".chunk_x"), db.getDataInt(path + ".chunk_z")).equals(chunk)) {
                 p.set(path);
             }
         });

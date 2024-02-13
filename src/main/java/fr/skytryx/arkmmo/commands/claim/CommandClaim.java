@@ -21,7 +21,7 @@ public class CommandClaim implements CommandExecutor {
             ArkPlayer arkPlayer = Ftion.getArkPlayer(player);
             if (arkPlayer != null && !arkPlayer.getGuild().getName().equals("None")) {
                 new Claim(player.getLocation().getChunk(), Objects.requireNonNull(Ftion.getArkPlayer(player)).getGuild().getName(), UUID.randomUUID()).save();
-                player.sendMessage(Ftion.msgf("claim", "You claimed this chunk! §6" + player.getLocation().getChunk().getX() + " " + player.getLocation().getChunk().getZ()));
+                player.sendMessage(Ftion.msgf("Claim", "You claimed this chunk! §6" + player.getLocation().getChunk().getX() + " " + player.getLocation().getChunk().getZ()));
             }
         }
         return false;

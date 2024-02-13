@@ -16,7 +16,9 @@ public class CommandAdminclaim implements CommandExecutor {
                 if (strings[0].equals("remove")) {
                     Claim claim = Ftion.loadClaim(player.getLocation().getChunk(), player.getWorld());
                     if (claim != null) {
-                        Ftion.removeClaim(player.getLocation().getChunk());
+                        Ftion.removeClaim(player.getLocation().getChunk(), player.getWorld());
+                        player.sendMessage(Ftion.msgf("Claim", "You unclaimed this chunk! §6" + player.getLocation().getChunk().getX() + " " + player.getLocation().getChunk().getZ()));
+
                     }
                 }
             }

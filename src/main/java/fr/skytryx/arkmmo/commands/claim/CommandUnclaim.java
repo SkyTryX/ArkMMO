@@ -16,7 +16,11 @@ public class CommandUnclaim implements CommandExecutor {
             Claim claim = Ftion.loadClaim(player.getLocation().getChunk(), player.getWorld());
             ArkPlayer arkPlayer = Ftion.getArkPlayer(player);
             if(arkPlayer != null && claim != null && claim.getOwner().equals(arkPlayer.getGuild().getName())){
-                Ftion.removeClaim(player.getLocation().getChunk());
+                Ftion.removeClaim(player.getLocation().getChunk(), player.getWorld());
+                player.sendMessage(Ftion.msgf("Claim", "You unclaimed this chunk! §6" + player.getLocation().getChunk().getX() + " " + player.getLocation().getChunk().getZ()));
+
+            } else {
+                player.sendMessage(Ftion.msgf("Claim", "§cYou can't unclaim this chunk"));
             }
         }
         return false;
