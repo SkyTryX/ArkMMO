@@ -2,12 +2,10 @@ package fr.skytryx.arkmmo;
 
 import fr.skytryx.arkmmo.api.classes.ArkItem;
 import fr.skytryx.arkmmo.api.enums.Rarity;
-import fr.skytryx.arkmmo.commands.claim.CommandSeeclaim;
+import fr.skytryx.arkmmo.commands.claim.*;
 import fr.skytryx.arkmmo.commands.item.CommandGiveitem;
-import fr.skytryx.arkmmo.commands.claim.CommandAdminclaim;
-import fr.skytryx.arkmmo.commands.claim.CommandClaim;
-import fr.skytryx.arkmmo.commands.claim.CommandUnclaim;
 import fr.skytryx.arkmmo.commands.guild.*;
+import fr.skytryx.arkmmo.events.ClaimCheck;
 import fr.skytryx.arkmmo.events.FirstJoin;
 import fr.skytryx.arkmmo.events.SBManager;
 import org.bukkit.Bukkit;
@@ -30,6 +28,7 @@ public class ArkMMO extends JavaPlugin {
         Objects.requireNonNull(getCommand("unclaim")).setExecutor(new CommandUnclaim());
         Objects.requireNonNull(getCommand("adminclaim")).setExecutor(new CommandAdminclaim());
         Objects.requireNonNull(getCommand("seeclaim")).setExecutor(new CommandSeeclaim());
+        Objects.requireNonNull(getCommand("bypassclaim")).setExecutor(new CommandBypassclaim());
 
         Objects.requireNonNull(getCommand("guildcreate")).setExecutor(new CommandGuildcreate());
         Objects.requireNonNull(getCommand("guildinvite")).setExecutor(new CommandGuildinvite());
@@ -47,6 +46,7 @@ public class ArkMMO extends JavaPlugin {
         long start2 = System.currentTimeMillis();
         getServer().getPluginManager().registerEvents(new FirstJoin() ,this);
         getServer().getPluginManager().registerEvents(new SBManager(), this);
+        getServer().getPluginManager().registerEvents(new ClaimCheck(), this);
         Bukkit.getLogger().info("[ArkMMO] Loaded events ("+(System.currentTimeMillis()-start2)+"ms)! Now loading Items");
         start2 = System.currentTimeMillis();
         items.put("midas_sword", new ArkItem(Material.GOLDEN_SWORD, "Midas Sword", Rarity.MYTHIC, List.of("§6The §nbest§r§6 of the golden swords").toArray(new String[0])));

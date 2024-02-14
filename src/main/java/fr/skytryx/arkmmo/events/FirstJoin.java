@@ -9,8 +9,8 @@ import org.bukkit.event.player.PlayerJoinEvent;
 public class FirstJoin implements Listener {
 
     @EventHandler
-    public void onFirstJoin(PlayerJoinEvent event){
-        if(!event.getPlayer().hasPlayedBefore()){
+    public void onFirstJoin(PlayerJoinEvent event) {
+        if (!event.getPlayer().hasPlayedBefore()) {
             new ArkPlayer(event.getPlayer()).save();
             event.getPlayer().sendTitle("§bBIENVENUE!", "sur Arkxia MMORPG", 1, 80, 1);
             event.getPlayer().playSound(event.getPlayer().getLocation(), Sound.ENTITY_PLAYER_LEVELUP, 3.0F, 0.5F);

@@ -35,3 +35,6 @@ commands:
     permission: arkmmo.giveitem
   seeclaim:
     description: See claims around you
+  bypassclaim:
+    description: Grants you full perms over claims
+    permission: arkmmo.bypassclaim
