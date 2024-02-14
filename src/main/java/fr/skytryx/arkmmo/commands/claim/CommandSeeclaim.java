@@ -23,9 +23,13 @@ public class CommandSeeclaim implements CommandExecutor {
                 StringBuilder msg = new StringBuilder();
                 for (int j = basechunk_x - 4; j <= basechunk_x + 4; j++) {
                     if (Ftion.loadClaim(world.getChunkAt(j, i), world) == null) {
-                        msg.append("§a▧");
+                        if(j == basechunk_x && i == basechunk_z){
+                            msg.append("§l§a▧");
+                        } else msg.append("§r§a▧");
                     } else {
-                        msg.append("§c▧");
+                        if(j == basechunk_x && i == basechunk_z){
+                            msg.append("§l§c▧");
+                        } else msg.append("§r§c▧");
                     }
                 }
                 TextComponent message = new TextComponent(msg.toString());
