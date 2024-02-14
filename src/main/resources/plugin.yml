@@ -33,3 +33,5 @@ commands:
   giveitem:
     description: To give yourself special items
     permission: arkmmo.giveitem
+  seeclaim:
+    description: See claims around you

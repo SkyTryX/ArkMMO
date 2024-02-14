@@ -2,6 +2,7 @@ package fr.skytryx.arkmmo;
 
 import fr.skytryx.arkmmo.api.classes.ArkItem;
 import fr.skytryx.arkmmo.api.enums.Rarity;
+import fr.skytryx.arkmmo.commands.claim.CommandSeeclaim;
 import fr.skytryx.arkmmo.commands.item.CommandGiveitem;
 import fr.skytryx.arkmmo.commands.claim.CommandAdminclaim;
 import fr.skytryx.arkmmo.commands.claim.CommandClaim;
@@ -28,6 +29,7 @@ public class ArkMMO extends JavaPlugin {
         Objects.requireNonNull(getCommand("claim")).setExecutor(new CommandClaim());
         Objects.requireNonNull(getCommand("unclaim")).setExecutor(new CommandUnclaim());
         Objects.requireNonNull(getCommand("adminclaim")).setExecutor(new CommandAdminclaim());
+        Objects.requireNonNull(getCommand("seeclaim")).setExecutor(new CommandSeeclaim());
 
         Objects.requireNonNull(getCommand("guildcreate")).setExecutor(new CommandGuildcreate());
         Objects.requireNonNull(getCommand("guildinvite")).setExecutor(new CommandGuildinvite());
