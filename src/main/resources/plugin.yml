@@ -38,3 +38,6 @@ commands:
   bypassclaim:
     description: Grants you full perms over claims
     permission: arkmmo.bypassclaim
+  gemsincruster:
+    description: opens a gui to incrust a gem
+    permission: arkmmo.gemsincruster

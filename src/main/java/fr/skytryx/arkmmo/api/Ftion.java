@@ -5,8 +5,12 @@ import fr.skytryx.arkmmo.api.classes.Claim;
 import fr.skytryx.arkmmo.api.classes.Guild;
 import org.bukkit.Bukkit;
 import org.bukkit.Chunk;
+import org.bukkit.Material;
 import org.bukkit.World;
 import org.bukkit.entity.Player;
+import org.bukkit.inventory.Inventory;
+import org.bukkit.inventory.ItemStack;
+import org.bukkit.inventory.meta.ItemMeta;
 
 import java.util.Map;
 import java.util.Objects;
@@ -104,5 +108,20 @@ public class Ftion {
                 player.sendMessage(msg);
             }
         }
+    }
+
+    public static void fillInv(Inventory i){
+        ItemStack item = itemCreator(Material.BLACK_STAINED_GLASS_PANE, " ");
+        for(int j = 0; j < i.getSize(); j++){
+            i.setItem(j, item);
+        }
+    }
+
+    public static ItemStack itemCreator(Material m, String n){
+        ItemStack item = new ItemStack(m);
+        ItemMeta itemMeta = item.getItemMeta();
+        itemMeta.setDisplayName(n);
+        item.setItemMeta(itemMeta);
+        return item;
     }
 }

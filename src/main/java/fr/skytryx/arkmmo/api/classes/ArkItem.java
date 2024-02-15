@@ -1,5 +1,6 @@
 package fr.skytryx.arkmmo.api.classes;
 
+import fr.skytryx.arkmmo.api.enums.Gemstone;
 import fr.skytryx.arkmmo.api.enums.Rarity;
 import org.bukkit.Material;
 import org.bukkit.inventory.ItemFlag;
@@ -16,12 +17,24 @@ public class ArkItem {
     String[] lore;
     String name;
     Rarity rarity;
+    Integer model_data;
+    List<Gemstone> gemstones = new LinkedList<>();
 
-    public ArkItem(Material m, String n, Rarity r, String[] l){
+    public ArkItem(Material m, String n, Rarity r, String[] l, Integer md){
         this.material = m;
         this.name = n;
         this.rarity = r;
         this.lore = l;
+        this.model_data = md;
+    }
+
+    public ArkItem(Material m, String n, Rarity r, String[] l, List<Gemstone> g, Integer md){
+        this.material = m;
+        this.name = n;
+        this.rarity = r;
+        this.lore = l;
+        this.gemstones = g;
+        this.model_data = md;
     }
 
 
@@ -62,6 +75,7 @@ public class ArkItem {
         itemMeta.setDisplayName(color+this.getName());
         itemMeta.setLore(l);
         itemMeta.addItemFlags(ItemFlag.HIDE_ATTRIBUTES);
+        itemMeta.setCustomModelData(this.model_data);
         item.setItemMeta(itemMeta);
         return item;
     }

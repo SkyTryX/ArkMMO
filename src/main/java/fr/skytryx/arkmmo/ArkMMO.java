@@ -3,11 +3,13 @@ package fr.skytryx.arkmmo;
 import fr.skytryx.arkmmo.api.classes.ArkItem;
 import fr.skytryx.arkmmo.api.enums.Rarity;
 import fr.skytryx.arkmmo.commands.claim.*;
+import fr.skytryx.arkmmo.commands.item.CommandGemincruster;
 import fr.skytryx.arkmmo.commands.item.CommandGiveitem;
 import fr.skytryx.arkmmo.commands.guild.*;
 import fr.skytryx.arkmmo.events.ClaimCheck;
 import fr.skytryx.arkmmo.events.FirstJoin;
 import fr.skytryx.arkmmo.events.SBManager;
+import fr.skytryx.arkmmo.events.menu.GemincrusterMenu;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.plugin.java.JavaPlugin;
@@ -42,15 +44,18 @@ public class ArkMMO extends JavaPlugin {
         Objects.requireNonNull(getCommand("guilddemote")).setExecutor(new CommandGuilddemote());
 
         Objects.requireNonNull(getCommand("giveitem")).setExecutor(new CommandGiveitem());
+        Objects.requireNonNull(getCommand("gemsincruster")).setExecutor(new CommandGemincruster());
         Bukkit.getLogger().info("[ArkMMO] Loaded commands ("+(System.currentTimeMillis()-start1)+"ms)! Now loading Events");
         long start2 = System.currentTimeMillis();
         getServer().getPluginManager().registerEvents(new FirstJoin() ,this);
         getServer().getPluginManager().registerEvents(new SBManager(), this);
         getServer().getPluginManager().registerEvents(new ClaimCheck(), this);
+        getServer().getPluginManager().registerEvents(new GemincrusterMenu(), this);
         Bukkit.getLogger().info("[ArkMMO] Loaded events ("+(System.currentTimeMillis()-start2)+"ms)! Now loading Items");
         start2 = System.currentTimeMillis();
-        items.put("midas_sword", new ArkItem(Material.GOLDEN_SWORD, "Midas Sword", Rarity.MYTHIC, List.of("§6The §nbest§r§6 of the golden swords").toArray(new String[0])));
-        items.put("arch_sword", new ArkItem(Material.STICK, "Arch Sword", Rarity.UNCOMMON, List.of("§8§oUnfortunately, it sucks, a lot..").toArray(new String[0])));
+        items.put("midas_sword", new ArkItem(Material.GOLDEN_SWORD, "Midas Sword", Rarity.MYTHIC, List.of("§6The §nbest§r§6 of the golden swords").toArray(new String[0]), 1));
+        items.put("arch_sword", new ArkItem(Material.STICK, "Arch Sword", Rarity.UNCOMMON, List.of("§8§oUnfortunately, it sucks, a lot..").toArray(new String[0]), 2));
+        items.put("curved_sword", new ArkItem(Material.DIAMOND_SWORD, "Curved Sword", Rarity.COMMON, List.of("§8§oKinda look funny not gonna lie").toArray(new String[0]), 3));
         Bukkit.getLogger().info("[ArkMMO] Loaded items ("+(System.currentTimeMillis()-start2)+"ms)");
         Bukkit.getLogger().info("[ArkMMO] Plugin Enabled ("+(System.currentTimeMillis()-start1)+"ms)");
     }
