@@ -2,5 +2,5 @@ package fr.skytryx.arkmmo.api.enums;
 
 public enum Gemstone {
 
-    SPEED
+    RED,BLUE,YELLOW,WHITE
 }

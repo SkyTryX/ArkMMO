@@ -1,8 +1,11 @@
 package fr.skytryx.arkmmo.api;
 
+import fr.skytryx.arkmmo.api.classes.ArkItem;
 import fr.skytryx.arkmmo.api.classes.ArkPlayer;
 import fr.skytryx.arkmmo.api.classes.Claim;
 import fr.skytryx.arkmmo.api.classes.Guild;
+import fr.skytryx.arkmmo.api.enums.Gemstone;
+import fr.skytryx.arkmmo.api.enums.Rarity;
 import org.bukkit.Bukkit;
 import org.bukkit.Chunk;
 import org.bukkit.Material;
@@ -11,7 +14,9 @@ import org.bukkit.entity.Player;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
+import org.jetbrains.annotations.Nullable;
 
+import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 import java.util.UUID;
@@ -123,5 +128,36 @@ public class Ftion {
         itemMeta.setDisplayName(n);
         item.setItemMeta(itemMeta);
         return item;
+    }
+
+    @Nullable
+    public static Rarity getRarity(ItemStack item) {
+        Rarity r = null;
+        if(item.getItemMeta().getDisplayName().startsWith("§f")) r = Rarity.COMMON;
+        else if(item.getItemMeta().getDisplayName().startsWith("§a")) r = Rarity.UNCOMMON;
+        else if(item.getItemMeta().getDisplayName().startsWith("§b")) r = Rarity.RARE;
+        else if(item.getItemMeta().getDisplayName().startsWith("§d")) r = Rarity.EPIC;
+        else if(item.getItemMeta().getDisplayName().startsWith("§6")) r = Rarity.LEGENDARY;
+        else if(item.getItemMeta().getDisplayName().startsWith("§e")) r = Rarity.MYTHIC;
+        return r;
+    }
+
+    public static ArkItem getArkfromItem(ItemStack item) {
+        Rarity r = getRarity(item);
+        List<String> lore = item.getItemMeta().getLore();
+        if (r != null && lore != null) {
+            lore.removeFirst();
+            lore.removeLast();
+            lore.removeLast();
+            if (lore.getLast().contains("§fIncrusted with gemstone")) {
+                if (lore.getLast().contains("(RED)")) {
+                    lore.removeLast();
+                    lore.removeLast();
+                    return new ArkItem(item.getType(), item.getItemMeta().getDisplayName(), r, lore.toArray(new String[0]), Gemstone.RED);
+                }
+            }
+            return new ArkItem(item.getType(), item.getItemMeta().getDisplayName(), r, lore.toArray(new String[0]));
+        }
+        return null;
     }
 }

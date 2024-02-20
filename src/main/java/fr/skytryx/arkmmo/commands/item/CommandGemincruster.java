@@ -17,15 +17,16 @@ public class CommandGemincruster implements CommandExecutor {
         if(commandSender instanceof Player player){
             Inventory inv = Bukkit.createInventory(null, 45, "§8GemIncruster");
             Ftion.fillInv(inv);
-            inv.setItem(11, new ItemStack(Ftion.itemCreator(Material.GRAY_STAINED_GLASS_PANE, " ")));
-            inv.setItem(12, new ItemStack(Ftion.itemCreator(Material.GRAY_STAINED_GLASS_PANE, " ")));
+            inv.setItem(11, Ftion.itemCreator(Material.GRAY_STAINED_GLASS_PANE, " "));
+            inv.setItem(12, Ftion.itemCreator(Material.GRAY_STAINED_GLASS_PANE, " "));
             inv.setItem(13, new ItemStack(Material.AIR));
-            inv.setItem(14, new ItemStack(Ftion.itemCreator(Material.GRAY_STAINED_GLASS_PANE, " ")));
-            inv.setItem(15, new ItemStack(Ftion.itemCreator(Material.GRAY_STAINED_GLASS_PANE, " ")));
-            inv.setItem(29, new ItemStack(Ftion.itemCreator(Material.ARMOR_STAND, "§n§7Add Armor Here")));
+            inv.setItem(14, Ftion.itemCreator(Material.GRAY_STAINED_GLASS_PANE, " "));
+            inv.setItem(15, Ftion.itemCreator(Material.GRAY_STAINED_GLASS_PANE, " "));
+            inv.setItem(29, Ftion.itemCreator(Material.ARMOR_STAND, "§n§7Add Armor Here"));
             inv.setItem(20, new ItemStack(Material.AIR));
             inv.setItem(24, new ItemStack(Material.AIR));
-            inv.setItem(33, new ItemStack(Ftion.itemCreator(Material.BOOK, "§n§7Add Gemstone Here")));
+            inv.setItem(33, Ftion.itemCreator(Material.BOOK, "§n§7Add Gemstone Here"));
+            inv.setItem(44, Ftion.itemCreator(Material.FLINT_AND_STEEL, "§cUnincrust Gemstone"));
             player.openInventory(inv);
         }
         return false;

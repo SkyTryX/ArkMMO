@@ -17,24 +17,21 @@ public class ArkItem {
     String[] lore;
     String name;
     Rarity rarity;
-    Integer model_data;
-    List<Gemstone> gemstones = new LinkedList<>();
+    Gemstone gemstone;
 
-    public ArkItem(Material m, String n, Rarity r, String[] l, Integer md){
+    public ArkItem(Material m, String n, Rarity r, String[] l){
         this.material = m;
         this.name = n;
         this.rarity = r;
         this.lore = l;
-        this.model_data = md;
     }
 
-    public ArkItem(Material m, String n, Rarity r, String[] l, List<Gemstone> g, Integer md){
+    public ArkItem(Material m, String n, Rarity r, String[] l, Gemstone g){
         this.material = m;
         this.name = n;
         this.rarity = r;
         this.lore = l;
-        this.gemstones = g;
-        this.model_data = md;
+        this.gemstone = g;
     }
 
 
@@ -55,6 +52,14 @@ public class ArkItem {
         return rarity;
     }
 
+    public Gemstone getGemstone() {
+        return gemstone;
+    }
+
+    public void setGemstone(Gemstone gemstone) {
+        this.gemstone = gemstone;
+    }
+
     public ItemStack getAsItem() {
         ItemStack item = new ItemStack(this.getMaterial());
         ItemMeta itemMeta = item.getItemMeta();
@@ -71,11 +76,14 @@ public class ArkItem {
         l.add("");
         l.addAll(Arrays.stream(this.getLore()).toList());
         l.add("");
+        if(this.getGemstone() != null){
+            l.add("§fIncrusted with gemstone ("+this.getGemstone()+")");
+            l.add("");
+        }
         l.add(color+"§l"+this.getRarity());
         itemMeta.setDisplayName(color+this.getName());
         itemMeta.setLore(l);
         itemMeta.addItemFlags(ItemFlag.HIDE_ATTRIBUTES);
-        itemMeta.setCustomModelData(this.model_data);
         item.setItemMeta(itemMeta);
         return item;
     }

@@ -10,6 +10,7 @@ import fr.skytryx.arkmmo.events.ClaimCheck;
 import fr.skytryx.arkmmo.events.FirstJoin;
 import fr.skytryx.arkmmo.events.SBManager;
 import fr.skytryx.arkmmo.events.menu.GemincrusterMenu;
+import fr.skytryx.arkmmo.events.menu.GemunincrusterMenu;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.plugin.java.JavaPlugin;
@@ -45,17 +46,24 @@ public class ArkMMO extends JavaPlugin {
 
         Objects.requireNonNull(getCommand("giveitem")).setExecutor(new CommandGiveitem());
         Objects.requireNonNull(getCommand("gemsincruster")).setExecutor(new CommandGemincruster());
+
         Bukkit.getLogger().info("[ArkMMO] Loaded commands ("+(System.currentTimeMillis()-start1)+"ms)! Now loading Events");
         long start2 = System.currentTimeMillis();
         getServer().getPluginManager().registerEvents(new FirstJoin() ,this);
         getServer().getPluginManager().registerEvents(new SBManager(), this);
         getServer().getPluginManager().registerEvents(new ClaimCheck(), this);
         getServer().getPluginManager().registerEvents(new GemincrusterMenu(), this);
+        getServer().getPluginManager().registerEvents(new GemunincrusterMenu(), this);
         Bukkit.getLogger().info("[ArkMMO] Loaded events ("+(System.currentTimeMillis()-start2)+"ms)! Now loading Items");
         start2 = System.currentTimeMillis();
-        items.put("midas_sword", new ArkItem(Material.GOLDEN_SWORD, "Midas Sword", Rarity.MYTHIC, List.of("§6The §nbest§r§6 of the golden swords").toArray(new String[0]), 1));
-        items.put("arch_sword", new ArkItem(Material.STICK, "Arch Sword", Rarity.UNCOMMON, List.of("§8§oUnfortunately, it sucks, a lot..").toArray(new String[0]), 2));
-        items.put("curved_sword", new ArkItem(Material.DIAMOND_SWORD, "Curved Sword", Rarity.COMMON, List.of("§8§oKinda look funny not gonna lie").toArray(new String[0]), 3));
+        items.put("midas_sword", new ArkItem(Material.GOLDEN_SWORD, "Midas Sword", Rarity.MYTHIC, List.of("§6The §nbest§r§6 of the golden swords").toArray(new String[0])));
+        items.put("arch_sword", new ArkItem(Material.STICK, "Arch Sword", Rarity.UNCOMMON, List.of("§8§oUnfortunately, it sucks, a lot..").toArray(new String[0])));
+        items.put("curved_sword", new ArkItem(Material.DIAMOND_SWORD, "Curved Sword", Rarity.COMMON, List.of("§8§oKinda look funny not gonna lie").toArray(new String[0])));
+        items.put("dance_pants", new ArkItem(Material.GOLDEN_LEGGINGS, "Dance Pants", Rarity.RARE, List.of("§8§oDancin..").toArray(new String[0])));
+        items.put("blue_gemstone", new ArkItem(Material.BLUE_CANDLE, "Blue Gemstone", Rarity.EPIC, List.of("§r§bGrants ...").toArray(new String[0])));
+        items.put("red_gemstone", new ArkItem(Material.RED_CANDLE, "Red Gemstone", Rarity.EPIC, List.of("§r§bGrants ...").toArray(new String[0])));
+        items.put("white_gemstone", new ArkItem(Material.WHITE_CANDLE, "White Gemstone", Rarity.EPIC, List.of("§r§bGrants ...").toArray(new String[0])));
+        items.put("yellow_gemstone", new ArkItem(Material.YELLOW_CANDLE, "Yellow Gemstone", Rarity.EPIC, List.of("§r§bGrants ...").toArray(new String[0])));
         Bukkit.getLogger().info("[ArkMMO] Loaded items ("+(System.currentTimeMillis()-start2)+"ms)");
         Bukkit.getLogger().info("[ArkMMO] Plugin Enabled ("+(System.currentTimeMillis()-start1)+"ms)");
     }
