@@ -40,10 +40,12 @@ public class GemincrusterMenu implements Listener {
                         ItemStack item = event.getWhoClicked().getOpenInventory().getItem(20);
                         event.getWhoClicked().getOpenInventory().setItem(20, event.getCurrentItem());
                         event.getClickedInventory().setItem(event.getSlot(), item);
+                        ((Player) event.getWhoClicked()).playSound(event.getWhoClicked().getLocation(), Sound.BLOCK_DISPENSER_DISPENSE, 1f, 1f);
                     } else if (event.getCurrentItem().getItemMeta().getDisplayName().contains("Gemstone")){
                         ItemStack item = event.getWhoClicked().getOpenInventory().getItem(24);
                         event.getWhoClicked().getOpenInventory().setItem(24, event.getCurrentItem());
                         event.getClickedInventory().setItem(event.getSlot(), item);
+                        ((Player) event.getWhoClicked()).playSound(event.getWhoClicked().getLocation(), Sound.BLOCK_DISPENSER_DISPENSE, 1f, 1f);
                     }
                     ItemStack item = event.getWhoClicked().getOpenInventory().getItem(20);
                     ItemStack gemstone = event.getWhoClicked().getOpenInventory().getItem(24);

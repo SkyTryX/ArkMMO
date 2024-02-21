@@ -6,10 +6,7 @@ import fr.skytryx.arkmmo.api.classes.Claim;
 import fr.skytryx.arkmmo.api.classes.Guild;
 import fr.skytryx.arkmmo.api.enums.Gemstone;
 import fr.skytryx.arkmmo.api.enums.Rarity;
-import org.bukkit.Bukkit;
-import org.bukkit.Chunk;
-import org.bukkit.Material;
-import org.bukkit.World;
+import org.bukkit.*;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
@@ -18,7 +15,6 @@ import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
 import java.util.Map;
-import java.util.Objects;
 import java.util.UUID;
 import java.util.concurrent.atomic.AtomicReference;
 
@@ -28,34 +24,38 @@ public class Ftion {
         return "§c["+prefix+"] §b"+msg;
     }
 
-    public static ArkPlayer getWithoutGuildArkPlayer(Player player){
-        Database db = new Database("player");
-        for (Map.Entry<String, Object> set :db.getDatas().getValues(false).entrySet()){
-            if(player.getUniqueId().toString().equals(set.getKey())){
-                ArkPlayer res = new ArkPlayer(player);
-                res.setGold((Integer) db.getData(set.getKey()+".gold"));
-                res.setAether((Integer) db.getData(set.getKey()+".aether"));
-                res.setAgilite((Integer) db.getData(set.getKey()+".agilite"));
-                res.setXP((Integer) db.getData(set.getKey()+".xp"));
-                return res;
-            }
-        }
-        return null;
-    }
     public static Guild getGuildFromName(String name){
         Database db = new Database("guild");
         for (Map.Entry<String, Object> set :db.getDatas().getValues(false).entrySet()) {
             if (name.equals(set.getKey())) {
-                Guild res = new Guild(name, Objects.requireNonNull(getWithoutGuildArkPlayer((Player) Bukkit.getOfflinePlayer(UUID.fromString(db.getStringData(set.getKey() + ".owner"))))));
+                OfflinePlayer p = Bukkit.getOfflinePlayer(UUID.fromString(db.getStringData(set.getKey() + ".owner")));
+                Guild res;
+                if(p.isOnline()){
+                    res = new Guild(name, new ArkPlayer((Player)p));
+                } else {
+                    res = new Guild(name, String.valueOf(p.getUniqueId()));
+                }
                 res.setXP((Integer) db.getData(set.getKey() + ".xp"));
                 res.setLevel((Integer) db.getData(set.getKey() + ".level"));
                 for (Object o : db.getDataList(set.getKey() + ".members")) {
-                    ArkPlayer temp = getWithoutGuildArkPlayer((Player)Bukkit.getOfflinePlayer(UUID.fromString((String) o)));
-                    if(temp != null && !res.getMembers().contains(String.valueOf(temp.getPlayer().getUniqueId()))) res.addMembers(temp);
+                    p = Bukkit.getOfflinePlayer(UUID.fromString((String)o));
+                    ArkPlayer temp;
+                    if(p.isOnline()){
+                        temp = new ArkPlayer((Player) p);
+                    } else {
+                        temp = new ArkPlayer(p.getUniqueId(), p.getName());
+                    }
+                    if(!res.getMembers().contains(String.valueOf(temp.getUUID()))) res.addMembers(temp);
                 }
                 for (Object o : db.getDataList(set.getKey() + ".moderators")) {
-                    ArkPlayer temp = getWithoutGuildArkPlayer((Player)Bukkit.getOfflinePlayer(UUID.fromString((String) o)));
-                    if(temp != null && !res.getModerators().contains(String.valueOf(temp.getPlayer().getUniqueId()))) res.addModerator(temp);
+                    p = Bukkit.getOfflinePlayer(UUID.fromString((String)o));
+                    ArkPlayer temp;
+                    if(p.isOnline()){
+                        temp = new ArkPlayer((Player)p);
+                    } else {
+                        temp = new ArkPlayer(p.getUniqueId(), p.getName());
+                    }
+                    if(!res.getModerators().contains(String.valueOf(temp.getUUID()))) res.addModerator(temp);
                 }
                 return res;
             }

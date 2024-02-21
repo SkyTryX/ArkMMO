@@ -6,10 +6,13 @@ import org.bukkit.entity.Player;
 
 import java.util.LinkedList;
 import java.util.List;
+import java.util.UUID;
 
 public class ArkPlayer {
 
     Player player;
+    String UUID;
+    String name;
     Integer gold = 1000;
     Integer xp = 0;
     Integer force = 1;
@@ -22,6 +25,13 @@ public class ArkPlayer {
 
     public ArkPlayer(Player p){
         this.player = p;
+        this.UUID = p.getUniqueId().toString();
+        this.name = p.getName();
+    }
+
+    public ArkPlayer(UUID u, String n){
+        this.UUID = u.toString();
+        this.name = n;
     }
 
     public Player getPlayer(){
@@ -98,6 +108,14 @@ public class ArkPlayer {
 
     public void setRace(Races race) {
         this.race = race;
+    }
+
+    public String getUUID() {
+        return UUID;
+    }
+
+    public String getName() {
+        return name;
     }
 
     public void save(){

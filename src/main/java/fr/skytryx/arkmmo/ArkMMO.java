@@ -6,6 +6,7 @@ import fr.skytryx.arkmmo.commands.claim.*;
 import fr.skytryx.arkmmo.commands.item.CommandGemincruster;
 import fr.skytryx.arkmmo.commands.item.CommandGiveitem;
 import fr.skytryx.arkmmo.commands.guild.*;
+import fr.skytryx.arkmmo.events.ChatEvent;
 import fr.skytryx.arkmmo.events.ClaimCheck;
 import fr.skytryx.arkmmo.events.FirstJoin;
 import fr.skytryx.arkmmo.events.SBManager;
@@ -54,6 +55,7 @@ public class ArkMMO extends JavaPlugin {
         getServer().getPluginManager().registerEvents(new ClaimCheck(), this);
         getServer().getPluginManager().registerEvents(new GemincrusterMenu(), this);
         getServer().getPluginManager().registerEvents(new GemunincrusterMenu(), this);
+        getServer().getPluginManager().registerEvents(new ChatEvent(), this);
         Bukkit.getLogger().info("[ArkMMO] Loaded events ("+(System.currentTimeMillis()-start2)+"ms)! Now loading Items");
         start2 = System.currentTimeMillis();
         items.put("midas_sword", new ArkItem(Material.GOLDEN_SWORD, "Midas Sword", Rarity.MYTHIC, List.of("§6The §nbest§r§6 of the golden swords").toArray(new String[0])));

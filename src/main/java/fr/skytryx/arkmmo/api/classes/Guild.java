@@ -18,9 +18,16 @@ public class Guild {
 
     public Guild(String n, ArkPlayer o){
         this.name = n;
-        this.owner = String.valueOf(o.getPlayer().getUniqueId());
-        this.members.add(o.getPlayer().getUniqueId().toString());
-        this.moderators.add(o.getPlayer().getUniqueId().toString());
+        this.owner = String.valueOf(o.getUUID());
+        this.members.add(o.getUUID());
+        this.moderators.add(o.getUUID());
+    }
+
+    public Guild(String n, String o){
+        this.name = n;
+        this.owner = String.valueOf(o);
+        this.members.add(o);
+        this.moderators.add(o);
     }
 
     public Guild(){
@@ -61,15 +68,15 @@ public class Guild {
     }
 
     public void setOwner(ArkPlayer o){
-        this.owner = o.getPlayer().getUniqueId().toString();
+        this.owner = o.getUUID();
     }
 
     public void addMembers(ArkPlayer p){
-        this.members.add(p.getPlayer().getUniqueId().toString());
+        this.members.add(p.getUUID());
     }
 
     public void removeMembers(ArkPlayer p){
-        this.members.remove(p.getPlayer().getUniqueId().toString());
+        this.members.remove(p.getUUID());
     }
 
     public List<String> getMembers(){
@@ -93,11 +100,11 @@ public class Guild {
     }
 
     public void addModerator(ArkPlayer p){
-        this.moderators.add(p.getPlayer().getUniqueId().toString());
+        this.moderators.add(p.getUUID());
     }
 
     public void removeModerator(ArkPlayer p){
-        this.moderators.remove(p.getPlayer().getUniqueId().toString());
+        this.moderators.remove(p.getUUID());
     }
 
     public void save(){
