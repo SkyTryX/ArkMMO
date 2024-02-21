@@ -1,8 +1,8 @@
 package fr.skytryx.arkmmo.events.menu;
 
-import fr.skytryx.arkmmo.api.Ftion;
-import fr.skytryx.arkmmo.api.classes.ArkItem;
-import fr.skytryx.arkmmo.api.enums.Gemstone;
+import fr.skytryx.arkmmo.utils.Ftion;
+import fr.skytryx.arkmmo.utils.classes.ArkItem;
+import fr.skytryx.arkmmo.utils.enums.Gemstone;
 import org.bukkit.Material;
 import org.bukkit.Sound;
 import org.bukkit.entity.Player;

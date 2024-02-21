@@ -1,4 +1,4 @@
-package fr.skytryx.arkmmo.api;
+package fr.skytryx.arkmmo.utils;
 
 import org.bukkit.Bukkit;
 import org.bukkit.configuration.file.YamlConfiguration;

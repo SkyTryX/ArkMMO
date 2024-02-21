@@ -1,4 +1,4 @@
-package fr.skytryx.arkmmo.api.classes;
+package fr.skytryx.arkmmo.utils.classes;
 
 import org.bukkit.Location;
 import org.bukkit.Material;

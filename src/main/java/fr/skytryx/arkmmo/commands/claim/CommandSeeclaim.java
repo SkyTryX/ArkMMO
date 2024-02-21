@@ -1,6 +1,6 @@
 package fr.skytryx.arkmmo.commands.claim;
 
-import fr.skytryx.arkmmo.api.Ftion;
+import fr.skytryx.arkmmo.utils.Ftion;
 import net.md_5.bungee.api.chat.ComponentBuilder;
 import net.md_5.bungee.api.chat.HoverEvent;
 import net.md_5.bungee.api.chat.TextComponent;

@@ -1,8 +1,8 @@
 package fr.skytryx.arkmmo.events;
 
-import fr.skytryx.arkmmo.api.Ftion;
-import fr.skytryx.arkmmo.api.classes.ArkPlayer;
-import fr.skytryx.arkmmo.api.classes.Claim;
+import fr.skytryx.arkmmo.utils.Ftion;
+import fr.skytryx.arkmmo.utils.classes.ArkPlayer;
+import fr.skytryx.arkmmo.utils.classes.Claim;
 import fr.skytryx.arkmmo.commands.claim.CommandBypassclaim;
 import org.bukkit.Chunk;
 import org.bukkit.event.EventHandler;

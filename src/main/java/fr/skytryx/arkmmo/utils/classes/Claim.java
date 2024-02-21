@@ -1,6 +1,6 @@
-package fr.skytryx.arkmmo.api.classes;
+package fr.skytryx.arkmmo.utils.classes;
 
-import fr.skytryx.arkmmo.api.Database;
+import fr.skytryx.arkmmo.utils.Database;
 import org.bukkit.Chunk;
 
 import java.util.UUID;

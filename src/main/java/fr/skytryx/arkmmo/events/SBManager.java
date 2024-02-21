@@ -1,7 +1,7 @@
 package fr.skytryx.arkmmo.events;
 
-import fr.skytryx.arkmmo.api.Ftion;
-import fr.skytryx.arkmmo.api.classes.ArkPlayer;
+import fr.skytryx.arkmmo.utils.Ftion;
+import fr.skytryx.arkmmo.utils.classes.ArkPlayer;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;

@@ -1,6 +1,6 @@
 package fr.skytryx.arkmmo.commands.item;
 
-import fr.skytryx.arkmmo.api.Ftion;
+import fr.skytryx.arkmmo.utils.Ftion;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.command.Command;

@@ -1,6 +1,6 @@
 package fr.skytryx.arkmmo.events;
 
-import fr.skytryx.arkmmo.api.classes.ArkPlayer;
+import fr.skytryx.arkmmo.utils.classes.ArkPlayer;
 import org.bukkit.Sound;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;

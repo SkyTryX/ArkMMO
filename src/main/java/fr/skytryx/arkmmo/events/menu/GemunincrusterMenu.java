@@ -1,10 +1,10 @@
 package fr.skytryx.arkmmo.events.menu;
 
 import fr.skytryx.arkmmo.ArkMMO;
-import fr.skytryx.arkmmo.api.Ftion;
-import fr.skytryx.arkmmo.api.classes.ArkItem;
-import fr.skytryx.arkmmo.api.classes.ArkPlayer;
-import fr.skytryx.arkmmo.api.enums.Gemstone;
+import fr.skytryx.arkmmo.utils.Ftion;
+import fr.skytryx.arkmmo.utils.classes.ArkItem;
+import fr.skytryx.arkmmo.utils.classes.ArkPlayer;
+import fr.skytryx.arkmmo.utils.enums.Gemstone;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.Sound;

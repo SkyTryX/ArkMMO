@@ -1,7 +1,7 @@
 package fr.skytryx.arkmmo;
 
-import fr.skytryx.arkmmo.api.classes.ArkItem;
-import fr.skytryx.arkmmo.api.enums.Rarity;
+import fr.skytryx.arkmmo.utils.classes.ArkItem;
+import fr.skytryx.arkmmo.utils.enums.Rarity;
 import fr.skytryx.arkmmo.commands.claim.*;
 import fr.skytryx.arkmmo.commands.item.CommandGemincruster;
 import fr.skytryx.arkmmo.commands.item.CommandGiveitem;

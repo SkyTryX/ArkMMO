@@ -1,8 +1,8 @@
 package fr.skytryx.arkmmo.commands.claim;
 
-import fr.skytryx.arkmmo.api.Ftion;
-import fr.skytryx.arkmmo.api.classes.ArkPlayer;
-import fr.skytryx.arkmmo.api.classes.Claim;
+import fr.skytryx.arkmmo.utils.Ftion;
+import fr.skytryx.arkmmo.utils.classes.ArkPlayer;
+import fr.skytryx.arkmmo.utils.classes.Claim;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;

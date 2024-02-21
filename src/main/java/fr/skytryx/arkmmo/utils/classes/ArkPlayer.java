@@ -1,7 +1,7 @@
-package fr.skytryx.arkmmo.api.classes;
+package fr.skytryx.arkmmo.utils.classes;
 
-import fr.skytryx.arkmmo.api.Database;
-import fr.skytryx.arkmmo.api.enums.Races;
+import fr.skytryx.arkmmo.utils.Database;
+import fr.skytryx.arkmmo.utils.enums.Races;
 import org.bukkit.entity.Player;
 
 import java.util.LinkedList;

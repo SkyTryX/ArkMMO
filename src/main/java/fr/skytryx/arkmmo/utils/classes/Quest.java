@@ -1,7 +1,7 @@
-package fr.skytryx.arkmmo.api.classes;
+package fr.skytryx.arkmmo.utils.classes;
 
-import fr.skytryx.arkmmo.api.enums.QuestType;
-import fr.skytryx.arkmmo.api.enums.RewardType;
+import fr.skytryx.arkmmo.utils.enums.QuestType;
+import fr.skytryx.arkmmo.utils.enums.RewardType;
 
 public class Quest {
 

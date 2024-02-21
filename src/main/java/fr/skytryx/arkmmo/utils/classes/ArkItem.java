@@ -1,7 +1,7 @@
-package fr.skytryx.arkmmo.api.classes;
+package fr.skytryx.arkmmo.utils.classes;
 
-import fr.skytryx.arkmmo.api.enums.Gemstone;
-import fr.skytryx.arkmmo.api.enums.Rarity;
+import fr.skytryx.arkmmo.utils.enums.Gemstone;
+import fr.skytryx.arkmmo.utils.enums.Rarity;
 import org.bukkit.Material;
 import org.bukkit.inventory.ItemFlag;
 import org.bukkit.inventory.ItemStack;

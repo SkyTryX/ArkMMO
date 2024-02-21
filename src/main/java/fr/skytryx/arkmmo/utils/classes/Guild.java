@@ -1,6 +1,6 @@
-package fr.skytryx.arkmmo.api.classes;
+package fr.skytryx.arkmmo.utils.classes;
 
-import fr.skytryx.arkmmo.api.Database;
+import fr.skytryx.arkmmo.utils.Database;
 
 import java.util.LinkedList;
 import java.util.List;

@@ -1,17 +1,16 @@
 package fr.skytryx.arkmmo.commands.guild;
 
-import fr.skytryx.arkmmo.api.Database;
-import fr.skytryx.arkmmo.api.Ftion;
-import fr.skytryx.arkmmo.api.classes.ArkPlayer;
-import fr.skytryx.arkmmo.api.classes.Guild;
-import org.bukkit.Bukkit;
+import fr.skytryx.arkmmo.utils.Database;
+import fr.skytryx.arkmmo.utils.Ftion;
+import fr.skytryx.arkmmo.utils.classes.ArkPlayer;
+import fr.skytryx.arkmmo.utils.classes.Guild;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 import org.jetbrains.annotations.NotNull;
 
-import static fr.skytryx.arkmmo.api.Ftion.getArkPlayer;
+import static fr.skytryx.arkmmo.utils.Ftion.getArkPlayer;
 
 public class CommandGuildcreate implements CommandExecutor {
     @Override

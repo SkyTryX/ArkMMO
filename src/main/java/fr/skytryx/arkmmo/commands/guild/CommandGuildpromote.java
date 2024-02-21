@@ -1,8 +1,8 @@
 package fr.skytryx.arkmmo.commands.guild;
 
-import fr.skytryx.arkmmo.api.Ftion;
-import fr.skytryx.arkmmo.api.classes.ArkPlayer;
-import fr.skytryx.arkmmo.api.classes.Guild;
+import fr.skytryx.arkmmo.utils.Ftion;
+import fr.skytryx.arkmmo.utils.classes.ArkPlayer;
+import fr.skytryx.arkmmo.utils.classes.Guild;
 import org.bukkit.Bukkit;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
@@ -13,7 +13,7 @@ import org.jetbrains.annotations.NotNull;
 import java.util.LinkedList;
 import java.util.List;
 
-import static fr.skytryx.arkmmo.api.Ftion.broadcastGuild;
+import static fr.skytryx.arkmmo.utils.Ftion.broadcastGuild;
 
 public class CommandGuildpromote implements CommandExecutor {
 

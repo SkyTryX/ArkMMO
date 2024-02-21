@@ -1,11 +1,11 @@
-package fr.skytryx.arkmmo.api;
+package fr.skytryx.arkmmo.utils;
 
-import fr.skytryx.arkmmo.api.classes.ArkItem;
-import fr.skytryx.arkmmo.api.classes.ArkPlayer;
-import fr.skytryx.arkmmo.api.classes.Claim;
-import fr.skytryx.arkmmo.api.classes.Guild;
-import fr.skytryx.arkmmo.api.enums.Gemstone;
-import fr.skytryx.arkmmo.api.enums.Rarity;
+import fr.skytryx.arkmmo.utils.classes.ArkItem;
+import fr.skytryx.arkmmo.utils.classes.ArkPlayer;
+import fr.skytryx.arkmmo.utils.classes.Claim;
+import fr.skytryx.arkmmo.utils.classes.Guild;
+import fr.skytryx.arkmmo.utils.enums.Gemstone;
+import fr.skytryx.arkmmo.utils.enums.Rarity;
 import org.bukkit.*;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.Inventory;
