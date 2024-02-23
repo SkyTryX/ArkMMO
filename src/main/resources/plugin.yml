@@ -44,3 +44,12 @@ commands:
   lobbyregion:
     description: Create a region that is only editable by op players
     permission: arkmmo.lobbyregion
+  addgold:
+    description: Add gold to a player
+    permission: arkmmo.addgold
+  removegold:
+    description: remove gold to a player
+    permission: arkmmo.removegold
+  setgold:
+    description: Set gold to a player
+    permission: arkmmo.setgold

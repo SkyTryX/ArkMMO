@@ -1,5 +1,8 @@
 package fr.skytryx.arkmmo;
 
+import fr.skytryx.arkmmo.commands.gold.CommandAddgold;
+import fr.skytryx.arkmmo.commands.gold.CommandRemovegold;
+import fr.skytryx.arkmmo.commands.gold.CommandSetgold;
 import fr.skytryx.arkmmo.events.*;
 import fr.skytryx.arkmmo.utils.classes.ArkItem;
 import fr.skytryx.arkmmo.utils.enums.Rarity;
@@ -45,6 +48,11 @@ public class ArkMMO extends JavaPlugin {
 
         Objects.requireNonNull(getCommand("giveitem")).setExecutor(new CommandGiveitem());
         Objects.requireNonNull(getCommand("gemsincruster")).setExecutor(new CommandGemincruster());
+
+        Objects.requireNonNull(getCommand("addgold")).setExecutor(new CommandAddgold());
+        Objects.requireNonNull(getCommand("removegold")).setExecutor(new CommandRemovegold());
+        Objects.requireNonNull(getCommand("setgold")).setExecutor(new CommandSetgold());
+
 
         Bukkit.getLogger().info("[ArkMMO] Loaded commands ("+(System.currentTimeMillis()-start1)+"ms)! Now loading Events");
         long start2 = System.currentTimeMillis();

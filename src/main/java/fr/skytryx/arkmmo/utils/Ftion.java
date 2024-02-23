@@ -160,4 +160,36 @@ public class Ftion {
         }
         return null;
     }
+
+    public static ArkPlayer getArkPlayerByUUID(String uuid){
+        Database db = new Database("player");
+        ArkPlayer arkPlayer = null;
+        for (Map.Entry<String, Object> entry : db.getDatas().getValues(false).entrySet()) {
+            String path = entry.getKey();
+            Object obj = entry.getValue();
+            if (uuid.equals(path)) {
+                OfflinePlayer player = Bukkit.getOfflinePlayer(UUID.fromString(uuid));
+                arkPlayer = new ArkPlayer(player.getUniqueId(), player.getName());
+                arkPlayer.setGold(db.getDataInt(path + ".gold"));
+                arkPlayer.setForce(db.getDataInt(path + ".force"));
+                arkPlayer.setAgilite(db.getDataInt(path + ".agilite"));
+                arkPlayer.setAether(db.getDataInt(path + ".aether"));
+                arkPlayer.setXP(db.getDataInt(path + ".xp"));
+                arkPlayer.setGuild(Ftion.getGuildFromName(db.getStringData(path+".guild")));
+            }
+        }
+        return arkPlayer;
+    }
+
+    public static boolean isNumeric(String strNum) {
+        if (strNum == null) {
+            return false;
+        }
+        try {
+            int i = Integer.parseInt(strNum);
+        } catch (NumberFormatException nfe) {
+            return false;
+        }
+        return true;
+    }
 }

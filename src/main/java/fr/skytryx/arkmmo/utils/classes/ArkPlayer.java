@@ -120,13 +120,13 @@ public class ArkPlayer {
 
     public void save(){
         Database db = new Database("player");
-        db.addData(this.player.getUniqueId()+".gold", this.getGold());
-        db.addData(this.player.getUniqueId()+".force", this.getForce());
-        db.addData(this.player.getUniqueId()+".agilite", this.getAgilite());
-        db.addData(this.player.getUniqueId()+".aether", this.getAether());
-        db.addData(this.player.getUniqueId()+".guild", this.getGuild().getName());
-        db.addData(this.player.getUniqueId()+".xp", this.getXP());
-        db.addData(this.player.getUniqueId()+".completed_quest", this.getCompleted_quest());
+        db.addData(this.getUUID()+".gold", this.getGold());
+        db.addData(this.getUUID()+".force", this.getForce());
+        db.addData(this.getUUID()+".agilite", this.getAgilite());
+        db.addData(this.getUUID()+".aether", this.getAether());
+        db.addData(this.getUUID()+".guild", this.getGuild().getName());
+        db.addData(this.getUUID()+".xp", this.getXP());
+        db.addData(this.getUUID()+".completed_quest", this.getCompleted_quest());
         db.save();
     }
 }

@@ -16,7 +16,8 @@ public class LobbyInteract implements Listener {
             db.getDatas().getValues(false).forEach((path, obj) ->{
                 if(db.getDataDouble(path+".x1") < clicked.getX() && clicked.getX() < db.getDataDouble(path+".x2") &&
                    db.getDataDouble(path+".y1") < clicked.getY() && clicked.getY() < db.getDataDouble(path+".y2") &&
-                   db.getDataDouble(path+".z1") < clicked.getZ() && clicked.getZ() < db.getDataDouble(path+".z2")){
+                   db.getDataDouble(path+".z1") < clicked.getZ() && clicked.getZ() < db.getDataDouble(path+".z2") &&
+                db.getData(path+".world").equals(event.getClickedBlock().getWorld().getName())){
                     event.setCancelled(true);
                 }
             });

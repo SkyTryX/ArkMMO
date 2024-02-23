@@ -9,6 +9,8 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 import org.jetbrains.annotations.NotNull;
 
+import java.util.Objects;
+
 public class CommandLobbyregion implements CommandExecutor {
 
     public static Location p1;
@@ -24,7 +26,7 @@ public class CommandLobbyregion implements CommandExecutor {
                 player.sendMessage(Ftion.msgf("Region", "Added §6pos2 §bfor your region"));
             } if(args[0].equals("set") && args.length == 2 && p1 != null & p2 != null){
                 Database db = new Database("lobbyregion");
-                db.addData(args[1]+".world", p1.getWorld());
+                db.addData(args[1]+".world", Objects.requireNonNull(p1.getWorld()).getName());
                 db.addData(args[1]+".x1", p1.getX());
                 db.addData(args[1]+".y1", p1.getY());
                 db.addData(args[1]+".z1", p1.getZ());
