@@ -1,15 +1,12 @@
 package fr.skytryx.arkmmo;
 
+import fr.skytryx.arkmmo.events.*;
 import fr.skytryx.arkmmo.utils.classes.ArkItem;
 import fr.skytryx.arkmmo.utils.enums.Rarity;
 import fr.skytryx.arkmmo.commands.claim.*;
 import fr.skytryx.arkmmo.commands.item.CommandGemincruster;
 import fr.skytryx.arkmmo.commands.item.CommandGiveitem;
 import fr.skytryx.arkmmo.commands.guild.*;
-import fr.skytryx.arkmmo.events.ChatEvent;
-import fr.skytryx.arkmmo.events.ClaimCheck;
-import fr.skytryx.arkmmo.events.FirstJoin;
-import fr.skytryx.arkmmo.events.SBManager;
 import fr.skytryx.arkmmo.events.menu.GemincrusterMenu;
 import fr.skytryx.arkmmo.events.menu.GemunincrusterMenu;
 import org.bukkit.Bukkit;
@@ -33,6 +30,7 @@ public class ArkMMO extends JavaPlugin {
         Objects.requireNonNull(getCommand("adminclaim")).setExecutor(new CommandAdminclaim());
         Objects.requireNonNull(getCommand("seeclaim")).setExecutor(new CommandSeeclaim());
         Objects.requireNonNull(getCommand("bypassclaim")).setExecutor(new CommandBypassclaim());
+        Objects.requireNonNull(getCommand("lobbyregion")).setExecutor(new CommandLobbyregion());
 
         Objects.requireNonNull(getCommand("guildcreate")).setExecutor(new CommandGuildcreate());
         Objects.requireNonNull(getCommand("guildinvite")).setExecutor(new CommandGuildinvite());
@@ -56,6 +54,7 @@ public class ArkMMO extends JavaPlugin {
         getServer().getPluginManager().registerEvents(new GemincrusterMenu(), this);
         getServer().getPluginManager().registerEvents(new GemunincrusterMenu(), this);
         getServer().getPluginManager().registerEvents(new ChatEvent(), this);
+        getServer().getPluginManager().registerEvents(new LobbyInteract(), this);
         Bukkit.getLogger().info("[ArkMMO] Loaded events ("+(System.currentTimeMillis()-start2)+"ms)! Now loading Items");
         start2 = System.currentTimeMillis();
         items.put("midas_sword", new ArkItem(Material.GOLDEN_SWORD, "Midas Sword", Rarity.MYTHIC, List.of("§6The §nbest§r§6 of the golden swords").toArray(new String[0])));

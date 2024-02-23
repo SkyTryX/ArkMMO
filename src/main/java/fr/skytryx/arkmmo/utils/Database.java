@@ -54,6 +54,7 @@ public class Database {
         return this.data.getInt(path);
     }
 
+    public Double getDataDouble(String path){return this.data.getDouble(path);}
 
     public Boolean containsData(String path){
         return this.data.contains(path);

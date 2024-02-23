@@ -41,3 +41,6 @@ commands:
   gemsincruster:
     description: opens a gui to incrust a gem
     permission: arkmmo.gemsincruster
+  lobbyregion:
+    description: Create a region that is only editable by op players
+    permission: arkmmo.lobbyregion
