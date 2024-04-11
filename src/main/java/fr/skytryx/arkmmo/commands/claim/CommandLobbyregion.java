@@ -28,10 +28,8 @@ public class CommandLobbyregion implements CommandExecutor {
                 Database db = new Database("lobbyregion");
                 db.addData(args[1]+".world", Objects.requireNonNull(p1.getWorld()).getName());
                 db.addData(args[1]+".x1", p1.getX());
-                db.addData(args[1]+".y1", p1.getY());
                 db.addData(args[1]+".z1", p1.getZ());
                 db.addData(args[1]+".x2", p2.getX());
-                db.addData(args[1]+".y2", p2.getY());
                 db.addData(args[1]+".z2", p2.getZ());
                 db.save();
                 player.sendMessage(Ftion.msgf("Region", "Saved region §6"+args[1]));

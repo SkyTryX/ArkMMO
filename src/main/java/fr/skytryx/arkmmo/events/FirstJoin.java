@@ -10,6 +10,8 @@ public class FirstJoin implements Listener {
 
     @EventHandler
     public void onFirstJoin(PlayerJoinEvent event) {
+        event.getPlayer().sendMessage("          §b§lARKXYA - MMORPG          \n"+
+                                      "§6Message quand tu rejoins le serv MMO");
         if (!event.getPlayer().hasPlayedBefore()) {
             new ArkPlayer(event.getPlayer()).save();
             event.getPlayer().sendTitle("§bBIENVENUE!", "sur Arkxia MMORPG", 1, 80, 1);
