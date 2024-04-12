@@ -3,6 +3,8 @@ package fr.skytryx.arkmmo;
 import fr.skytryx.arkmmo.commands.gold.CommandAddgold;
 import fr.skytryx.arkmmo.commands.gold.CommandRemovegold;
 import fr.skytryx.arkmmo.commands.gold.CommandSetgold;
+import fr.skytryx.arkmmo.commands.mobs.CommandMobregion;
+import fr.skytryx.arkmmo.commands.mobs.CommandSpawnmob;
 import fr.skytryx.arkmmo.events.*;
 import fr.skytryx.arkmmo.utils.classes.ArkItem;
 import fr.skytryx.arkmmo.utils.enums.Rarity;
@@ -53,6 +55,10 @@ public class ArkMMO extends JavaPlugin {
         Objects.requireNonNull(getCommand("removegold")).setExecutor(new CommandRemovegold());
         Objects.requireNonNull(getCommand("setgold")).setExecutor(new CommandSetgold());
 
+        Objects.requireNonNull(getCommand("spawnmob")).setExecutor(new CommandSpawnmob());
+        Objects.requireNonNull(getCommand("mobregion")).setExecutor(new CommandMobregion());
+
+
 
         Bukkit.getLogger().info("[ArkMMO] Loaded commands ("+(System.currentTimeMillis()-start1)+"ms)! Now loading Events");
         long start2 = System.currentTimeMillis();
@@ -63,6 +69,8 @@ public class ArkMMO extends JavaPlugin {
         getServer().getPluginManager().registerEvents(new GemunincrusterMenu(), this);
         getServer().getPluginManager().registerEvents(new ChatEvent(), this);
         getServer().getPluginManager().registerEvents(new LobbyInteract(), this);
+        getServer().getPluginManager().registerEvents(new BreakingEvent(), this);
+        getServer().getPluginManager().registerEvents(new MobSpawningInZone(), this);
         Bukkit.getLogger().info("[ArkMMO] Loaded events ("+(System.currentTimeMillis()-start2)+"ms)! Now loading Items");
         start2 = System.currentTimeMillis();
         items.put("midas_sword", new ArkItem(Material.GOLDEN_SWORD, "Midas Sword", Rarity.MYTHIC, List.of("§6The §nbest§r§6 of the golden swords").toArray(new String[0])));

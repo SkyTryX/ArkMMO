@@ -53,3 +53,9 @@ commands:
   setgold:
     description: Set gold to a player
     permission: arkmmo.setgold
+  spawnmob:
+    description: juan.
+    permission: arkmmo.spawnmob
+  mobregion:
+    description: Create region of mob spawn
+    permission: arkmmo.mobregion
