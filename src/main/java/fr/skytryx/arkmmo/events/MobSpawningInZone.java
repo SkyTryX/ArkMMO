@@ -2,7 +2,9 @@ package fr.skytryx.arkmmo.events;
 
 import fr.skytryx.arkmmo.utils.Database;
 import org.bukkit.Material;
+import org.bukkit.entity.EntityType;
 import org.bukkit.entity.Husk;
+import org.bukkit.entity.Player;
 import org.bukkit.entity.Zombie;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -10,7 +12,10 @@ import org.bukkit.event.entity.EntityCombustEvent;
 import org.bukkit.event.entity.EntityDamageEvent;
 import org.bukkit.event.entity.EntityDeathEvent;
 import org.bukkit.inventory.ItemStack;
+import org.bukkit.potion.PotionEffect;
+import org.bukkit.potion.PotionEffectType;
 
+import java.util.Objects;
 import java.util.Random;
 
 public class MobSpawningInZone implements Listener {
@@ -28,6 +33,9 @@ public class MobSpawningInZone implements Listener {
             } else if(event.getEntity().getScoreboardTags().contains("huskzone")) {
                 event.getEntity().setCustomName("§4Husk §7- §c" + (Math.round(((Husk) event.getEntity()).getHealth() - event.getDamage() + 1) + "§fHP"));
             }
+        }
+        if(event.getCause().equals(EntityDamageEvent.DamageCause.ENTITY_ATTACK) && Objects.requireNonNull(event.getDamageSource().getCausingEntity()).getScoreboardTags().contains("huskzone") && event.getEntity().getType().equals(EntityType.PLAYER)){
+            ((Player)event.getEntity()).addPotionEffect(new PotionEffect(PotionEffectType.SLOW, 30, 0));
         }
     }
 

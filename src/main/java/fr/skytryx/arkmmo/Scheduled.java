@@ -72,8 +72,8 @@ public class Scheduled {
                         int z = randomNumberGen(z2, z1);
                         assert world != null;
                         Husk huskentity = (Husk) world.spawnEntity(new Location(world, x,getValidHeight(y1, y2, x, z, world)+1 , z), EntityType.ZOMBIE);
-                        huskentity.setHealth(16);
-                        huskentity.addPotionEffect(new PotionEffect(PotionEffectType.INCREASE_DAMAGE, 99999, 0, false, false));
+                        huskentity.setHealth(30);
+                        huskentity.addPotionEffect(new PotionEffect(PotionEffectType.WEAKNESS, 99999, 0, false, false));
                         huskentity.setCustomName("§4Husk §7- §c"+huskentity.getHealth()+"§fHP");
                         huskentity.setCustomNameVisible(true);
                         huskentity.setPersistent(true);

@@ -84,7 +84,6 @@ public class ArkMMO extends JavaPlugin {
         Bukkit.getLogger().info("[ArkMMO] Loaded items ("+(System.currentTimeMillis()-start2)+"ms)");
         start2 = System.currentTimeMillis();
         Scheduled.LaunchMobSpawning();
-        Scheduled.CheckingMob();
         Bukkit.getLogger().info("[ArkMMO] Loaded scheduled events ("+(System.currentTimeMillis()-start2)+"ms)");
         Bukkit.getLogger().info("[ArkMMO] Plugin Enabled ("+(System.currentTimeMillis()-start1)+"ms)");
     }
