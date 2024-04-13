@@ -72,7 +72,7 @@ public class ArkMMO extends JavaPlugin {
         getServer().getPluginManager().registerEvents(new BreakingEvent(), this);
         getServer().getPluginManager().registerEvents(new MobSpawningInZone(), this);
         Bukkit.getLogger().info("[ArkMMO] Loaded events ("+(System.currentTimeMillis()-start2)+"ms)! Now loading Items");
-        start2 = System.currentTimeMillis();
+
         items.put("midas_sword", new ArkItem(Material.GOLDEN_SWORD, "Midas Sword", Rarity.MYTHIC, List.of("§6The §nbest§r§6 of the golden swords").toArray(new String[0])));
         items.put("arch_sword", new ArkItem(Material.STICK, "Arch Sword", Rarity.UNCOMMON, List.of("§8§oUnfortunately, it sucks, a lot..").toArray(new String[0])));
         items.put("curved_sword", new ArkItem(Material.DIAMOND_SWORD, "Curved Sword", Rarity.COMMON, List.of("§8§oKinda look funny not gonna lie").toArray(new String[0])));
@@ -82,6 +82,10 @@ public class ArkMMO extends JavaPlugin {
         items.put("white_gemstone", new ArkItem(Material.WHITE_CANDLE, "White Gemstone", Rarity.EPIC, List.of("§r§bGrants ...").toArray(new String[0])));
         items.put("yellow_gemstone", new ArkItem(Material.YELLOW_CANDLE, "Yellow Gemstone", Rarity.EPIC, List.of("§r§bGrants ...").toArray(new String[0])));
         Bukkit.getLogger().info("[ArkMMO] Loaded items ("+(System.currentTimeMillis()-start2)+"ms)");
+        start2 = System.currentTimeMillis();
+        Scheduled.LaunchMobSpawning();
+        Scheduled.CheckingMob();
+        Bukkit.getLogger().info("[ArkMMO] Loaded scheduled events ("+(System.currentTimeMillis()-start2)+"ms)");
         Bukkit.getLogger().info("[ArkMMO] Plugin Enabled ("+(System.currentTimeMillis()-start1)+"ms)");
     }
 

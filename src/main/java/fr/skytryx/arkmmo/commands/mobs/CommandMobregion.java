@@ -35,7 +35,7 @@ public class CommandMobregion implements CommandExecutor {
                 db.addData(args[1]+".y2", p1.getY());
                 db.addData(args[1]+".z2", p2.getZ());
                 db.addData(args[1]+".mob", 0);
-                db.addData(args[1]+".mob_mac", 10);
+                db.addData(args[1]+".mob_max", 10);
                 db.save();
                 player.sendMessage(Ftion.msgf("MobRegion", "Saved region §6"+args[1]+"("+p1.getX()+";"+p1.getZ()+"), ("+p2.getX()+";"+p2.getZ()+")"));
             }

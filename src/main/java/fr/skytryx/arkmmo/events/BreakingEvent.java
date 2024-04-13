@@ -2,13 +2,9 @@ package fr.skytryx.arkmmo.events;
 
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
-import org.bukkit.entity.EntityType;
-import org.bukkit.entity.Zombie;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.block.BlockBreakEvent;
-import org.bukkit.event.entity.EntityCombustEvent;
-import org.bukkit.event.entity.EntityDamageByEntityEvent;
 import org.bukkit.inventory.ItemStack;
 
 import java.util.*;
@@ -44,20 +40,6 @@ public class BreakingEvent implements Listener {
             event.setCancelled(true);
             event.getBlock().setType(Material.BEDROCK);
             Bukkit.getScheduler().scheduleSyncDelayedTask(Objects.requireNonNull(Bukkit.getPluginManager().getPlugin("ArkMMO")), () -> event.getBlock().setType(oldblock), 20L * ((int) block_list.get(oldblock).get(0)));
-        }
-    }
-
-    @EventHandler
-    public void onHitJuan(EntityDamageByEntityEvent event) {
-        if (Objects.requireNonNull(event.getEntity().getCustomName()).contains("Juan") && event.getEntityType().equals(EntityType.ZOMBIE)) {
-            event.getEntity().setCustomName("§4Juan §7- §c" + (Math.round(((Zombie) event.getEntity()).getHealth() - event.getDamage() + 1) + "§fHP"));
-        }
-    }
-
-    @EventHandler
-    public void onEntityCombust(EntityCombustEvent event) {
-        if (event.getEntity() instanceof Zombie) {
-            event.setCancelled(true);
         }
     }
 }
